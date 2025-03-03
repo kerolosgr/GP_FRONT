@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { useState } from "react";
 const ResumeUpload = ()=>{
-    const [IsEnterCodeOpened,setIsEnterCodeOpened] = useState(true);
+    const [IsEnterCodeOpened,setIsEnterCodeOpened] = useState(false);
     const [code,setcode]=useState("");
     return(
         <>
@@ -17,7 +17,7 @@ const ResumeUpload = ()=>{
         <span className="text-gray-700 text-center">Drag and drop your resume here or click to browse</span>
         </label>
         <input className="hidden" type="file" id="resume" name="resume"/>
-        <h5 className="my-4">Already Uploaded Your Resume ? <Button variant={"dark"}>Enter Your Code</Button></h5>
+        <h5 className="my-4">Already Uploaded Your Resume ? <Button onClick={()=>setIsEnterCodeOpened(!IsEnterCodeOpened)} variant={"dark"}>Enter Your Code</Button></h5>
         </div>
         <img src="/assets/laptop.webp" width={500} height={500}/>
         </div>
