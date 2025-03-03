@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 const Home = ()=>{
  return(
     <>
-    <div className="flex w-full justify-between items-center bg-[url('/assets/download.svg')]">
+    <div className="flex w-full justify-between min-h-[calc(100vh-100px)] items-center bg-[url('/assets/download.svg')]">
         <div className="ml-4 p-1 w-[50%]">
     <h1 className="text-black font-bold text-[200px]">DevPal</h1>
     <h4 className="w-[85%] text-[21px]">Your ultimate companion in the developer journey. Find jobs, courses, tutorials, papers, and everything you need to level up your skills and career. DevPal: Empowering developers, one step at a time.

@@ -1,7 +1,12 @@
+import Info from "./components/Info";
+import ResumeUpload from "./components/Resumeupload";
+
+
 const Upload = ()=>{
     return(
         <>
-        <h1>Upload</h1>
+        <Info/>
+        <ResumeUpload/>
         </>
     )
 }
