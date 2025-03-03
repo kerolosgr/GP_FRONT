@@ -1,7 +1,10 @@
+import SideBar from "./components/SideBar";
+
 const Discover = ()=>{
     return(
         <>
-        <h1>Discover</h1></>
+        <SideBar/>
+        </>
     )
 }
 export default Discover;
