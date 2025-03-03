@@ -33,7 +33,8 @@ const SideBar = ()=>{
 
             </div>
             <div className="w-[calc(100%-70px)] p-4">
-                <div className="flex flex-col justify-start items-center w-[500px] h-full bg-neutral-100 shadow rounded-xl p-2">
+
+                <div className="flex flex-col justify-start items-center w-[500px] h-full bg-neutral-50 rounded-xl p-2 shadow-xl">
                     <div className="w-full flex justify-start items-center h-[40%]">
                     <Avatar className="w-[200px] drop-shadow-xl">
                     <AvatarImage className="rounded-full" src="https://avatars.githubusercontent.com/u/183719833?v=4" />
