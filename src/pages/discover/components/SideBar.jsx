@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Profile from "./Profile";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import Jobs from "./Jobs";
 
 
 
@@ -49,6 +50,7 @@ const SideBar = ()=>{
             </div>
             <div className="w-[calc(100%-70px)] flex p-4 bg-[url('/assets/download.svg')]">
             {View === "profile" && <Profile />}
+            {View === "jobs" && <Jobs />}
                 
             </div>
         </div>

@@ -1,0 +1,29 @@
+import { Skeleton } from "@/components/ui/skeleton";
+import { Activity } from "lucide-react";
+
+
+const JobCardSkeleton = ()=>{
+    return(
+        <div className="w-[420px] h-[300px] p-4 flex flex-col justify-start items-start border rounded-xl border-gray-300 hover:shadow transition">
+                    <div className="w-full flex justify-between items-center">
+                        <div>
+                            <Skeleton className="w-full h-[20px] rounded-lg my-2"/>
+                            <Skeleton className="w-full h-[10px] rounded-lg mb-1"/>
+                            <Skeleton className="w-[40px] h-[10px] rounded-lg"/>
+                            <Skeleton className="w-[140px] my-2 h-[25px] rounded-lg"/>
+                        </div>
+                        <Skeleton className="w-[110px] h-[110px] rounded-lg"/>
+                    </div>
+                    <div className="flex justify-start items-center gap-2 text-[14px]">
+                    <Skeleton className="w-[70px] h-[10px] rounded-lg mb-1"/>
+                    <Skeleton className="w-[70px] h-[10px] rounded-lg mb-1"/>
+                    </div>
+                    <Skeleton className="w-full h-[10px] rounded-lg mb-1"/>
+                    <Skeleton className="w-full h-[10px] rounded-lg mb-1"/>
+                    <Skeleton className="w-full h-[10px] rounded-lg mb-1"/>
+                    <Skeleton className="w-full h-[10px] rounded-lg mb-1"/>
+                    <Skeleton className="w-[150px] h-[10px] rounded-lg mb-1"/>
+                </div>
+    )
+}
+export default JobCardSkeleton;
