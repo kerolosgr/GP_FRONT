@@ -15,7 +15,7 @@ const SideBar = ()=>{
     //profile , jobs , courses , papers , conference , favorites
     return(
         <>
-        <div className="flex w-full h-[calc(100vh-100px)] ">
+        <div className="flex w-full h-[calc(100vh-100px)]">
             <div className="bg-gray-50 w-[70px] flex flex-col justify-start items-center p-2 gap-y-1">
                 <Tooltipcustom message={"Profile"}>
                 <Button onClick={()=>SetView("profile")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "profile" && "bg-gray-800 text-white hover:bg-gray-600")}>
@@ -51,7 +51,6 @@ const SideBar = ()=>{
             <div className="w-[calc(100%-70px)] flex p-4 bg-[url('/assets/download.svg')]">
             {View === "profile" && <Profile />}
             {View === "jobs" && <Jobs />}
-                
             </div>
         </div>
         </>

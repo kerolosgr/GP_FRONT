@@ -17,6 +17,7 @@ const Profile = ()=>{
                     </div>
 
                     <div className="w-full flex flex-col p-2 gap-y-3 mt-4">
+                        <h5 className="font-bold text-xl">Personal Info</h5>
                     <span className="flex"><IdCard className="mr-2" /><p className="font-bold">532016</p></span>
                         <span className="flex"><Mail className="mr-2" /><p>Kerolossafwat41@gmail.com</p></span>
                         <span className="flex"><Earth className="mr-2" /><p>Egypt - Nasr City</p></span>
@@ -24,7 +25,7 @@ const Profile = ()=>{
                     </div>
 
                     <div className="w-full flex flex-col justify-center items-start mt-4">
-                        <h3 className="text-2xl ml-2 font-semibold">Skills</h3>
+                        <h3 className="text-xl ml-2 font-bold">Skills</h3>
                         <div className="w-full flex m-2 flex-wrap">
                         <Badge variant="dark">Javascript</Badge>
                         <Badge variant="dark">HTML</Badge>

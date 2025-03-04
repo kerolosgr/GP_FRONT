@@ -10,10 +10,10 @@ const Jobs = ()=>{
             <div className="w-full flex justify-start items-center gap-3 flex-wrap h-fit p-2 mt-4">
                 <JobCardSkeleton/>
             {
-                    Array.from({length:5}).map(
-                        ()=> <JobCard/>
-                    )
-                }
+                Array.from({length:5}).map(
+                    ()=> <JobCard/>
+                )
+            }
             </div>
         </div>
         </>
