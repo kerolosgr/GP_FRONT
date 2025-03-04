@@ -7,12 +7,13 @@ import Profile from "./Profile";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import Jobs from "./Jobs";
+import Bookmarks from "./Bookmarks";
 
 
 
 const SideBar = ()=>{
     const [View,SetView] = useState("profile");
-    //profile , jobs , courses , papers , conference , Bookmarks
+    //profile , jobs , courses , papers , conference , bookmarks
     return(
         <>
         <div className="flex w-full h-[calc(100vh-100px)]">
@@ -44,13 +45,14 @@ const SideBar = ()=>{
 
                 <span className="w-full mt-auto">
                 <Tooltipcustom message={"Bookmarks"}>
-                <Button onClick={()=>SetView("Bookmarks")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "Bookmarks" && "bg-gray-800 text-white hover:bg-gray-600")}><Bookmark /></Button>
+                <Button onClick={()=>SetView("bookmarks")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "bookmarks" && "bg-gray-800 text-white hover:bg-gray-600")}><Bookmark /></Button>
                 </Tooltipcustom></span>
 
             </div>
             <div className="w-[calc(100%-70px)] flex p-4 bg-[url('/assets/download.svg')]">
             {View === "profile" && <Profile />}
             {View === "jobs" && <Jobs />}
+            {View === "bookmarks" && <Bookmarks />}
             </div>
         </div>
         </>

@@ -3,9 +3,11 @@ import { DialogHeader ,Dialog, DialogContent, DialogDescription, DialogTitle} fr
 import { Input } from "@/components/ui/input";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const ResumeUpload = ()=>{
     const [IsEnterCodeOpened,setIsEnterCodeOpened] = useState(false);
     const [code,setcode]=useState("");
+    const navigate = useNavigate();
     return(
         <>
         <div className="flex justify-evenly items-center py-4">
@@ -42,7 +44,7 @@ const ResumeUpload = ()=>{
     <InputOTPSlot index={5} />
   </InputOTPGroup>
   </InputOTP>
-            <Button className={"mx-4"} variant={"dark"}>Submit</Button>
+            <Button onClick={()=>{code.length==6?navigate("/discover/"+code):null}} className={"mx-4"} variant={"dark"}>Submit</Button>
             </div>
         </DialogContent>
         </Dialog>
