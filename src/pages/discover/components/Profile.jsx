@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Book, Earth, IdCard, Mail } from "lucide-react";
 const Profile = ()=>{
@@ -37,7 +38,7 @@ const Profile = ()=>{
                         <Badge variant="dark">NODEJS</Badge>
                         </div>
                     </div>
-
+                <Button variant={"dark"} className="mt-4 ml-auto mr-4 px-5 rounded">Edit Profile</Button>
                 </div>
 
                 <div className="w-[calc(100%-500px)] mx-4 h-full bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
