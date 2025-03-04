@@ -18,11 +18,11 @@ const JobCardSkeleton = ()=>{
                     <Skeleton className="w-[50px] h-[15px] rounded-lg mb-1"/>
                     <Skeleton className="w-[50px] h-[15px] rounded-lg mb-1"/>
                     </div>
-                    <Skeleton className="w-full h-[10px] rounded-lg mb-1"/>
-                    <Skeleton className="w-full h-[10px] rounded-lg mb-1"/>
-                    <Skeleton className="w-full h-[10px] rounded-lg mb-1"/>
-                    <Skeleton className="w-full h-[10px] rounded-lg mb-1"/>
-                    <Skeleton className="w-[150px] h-[10px] rounded-lg mb-1"/>
+                    <Skeleton className="w-full h-[14px] rounded-lg mb-1"/>
+                    <Skeleton className="w-full h-[14px] rounded-lg mb-1"/>
+                    <Skeleton className="w-full h-[14px] rounded-lg mb-1"/>
+                    <Skeleton className="w-full h-[14px] rounded-lg mb-1"/>
+                    <Skeleton className="w-[150px] h-[14px] rounded-lg mb-1"/>
                 </div>
     )
 }

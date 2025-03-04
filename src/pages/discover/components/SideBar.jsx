@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 // import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { Book, BriefcaseBusiness, Calendar, Earth, IdCard, Mail, Scroll, Star, Video } from "lucide-react";
+import { Book, Bookmark, BriefcaseBusiness, Calendar, Earth, IdCard, Mail, Scroll, Star, Video } from "lucide-react";
 import Tooltipcustom from "./Tooltipcustom";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Profile from "./Profile";
@@ -12,7 +12,7 @@ import Jobs from "./Jobs";
 
 const SideBar = ()=>{
     const [View,SetView] = useState("profile");
-    //profile , jobs , courses , papers , conference , favorites
+    //profile , jobs , courses , papers , conference , Bookmarks
     return(
         <>
         <div className="flex w-full h-[calc(100vh-100px)]">
@@ -43,8 +43,8 @@ const SideBar = ()=>{
                 </Tooltipcustom>
 
                 <span className="w-full mt-auto">
-                <Tooltipcustom message={"Favorites"}>
-                <Button onClick={()=>SetView("favorites")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "favorites" && "bg-gray-800 text-white hover:bg-gray-600")}><Star /></Button>
+                <Tooltipcustom message={"Bookmarks"}>
+                <Button onClick={()=>SetView("Bookmarks")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "Bookmarks" && "bg-gray-800 text-white hover:bg-gray-600")}><Bookmark /></Button>
                 </Tooltipcustom></span>
 
             </div>

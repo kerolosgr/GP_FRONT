@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Activity, Stars } from "lucide-react";
+import { Activity, Bookmark, BriefcaseBusiness, Link2, MapPin, SquareArrowOutUpRight, Stars } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -33,8 +33,9 @@ const JobCard = () => {
                 <div className="w-full flex justify-between items-center">
                     <div>
                         <h5 className="font-semibold text-[18px] my-2">Software Engineer</h5>
-                        <p>Advansys</p>
-                        <p>Nasr City</p>
+                        <span className="flex justify-startmy-2 items-center"><BriefcaseBusiness size={15} className="mr-2" /><p>Advansys</p></span>
+                        <span className="flex justify-startmy-2 items-center"><MapPin size={15} className="mr-2" /><p>Nasr City</p></span>
+                        
                         <span className="bg-[#e8f3fc] min-w-[120px] max-w-[200px] h-[25px] flex justify-start py-2 px-4 items-center text-center rounded text-[12px] font-semibold my-2"><Activity size={15} color="#237ea3" className="mr-2" />3 days ago</span>
                     </div>
                     <div className="w-[110px] h-[110px]">
@@ -46,10 +47,11 @@ const JobCard = () => {
                     <p className="font-semibold">Full-time</p>
                     <p className="font-semibold">Remote</p>
                 </div>
-                <p className="mt-2 text-[14px] font-semibold text-gray-700">Join Advansys as a Software Engineer Intern and gain hands-on experience in a fast-paced and innovative environment. You'll work alongside experienced engineers and contribute to various software development projects, enhancing your technical skills while learning about real-world applications.Join Advansys as a Software Engineer Intern and gain hands-on experience in a fast-paced and innovative environment. You'll work alongside experienced engineers and contribute to various software development projects, enhancing your technical skills while learning about real-world applications.</p>
+                <p className="mt-2 text-[14px] font-semibold text-gray-700 max-h-[200px] line-clamp-6">Join Advansys as a Software Engineer Intern and gain hands-on experience in a fast-paced and innovative environment. You'll work alongside experienced engineers and contribute to various software development projects, enhancing your technical skills while learning about real-world applications.</p>
                 <div className="mt-10 ml-auto flex justify-center items-center">
-                <Link className="bg-black font-semibold text-white rounded text-[14px] py-2 px-10 hover:bg-neutral-900">Apply</Link>
-                <Button className="mx-2 rounded" variant={"dark"}><Stars  />Mark As Favorite</Button>
+                <Link className="bg-black font-semibold text-white rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-900 flex justify-center items-center"><SquareArrowOutUpRight className="mr-2" size={15} />Apply</Link>
+                <Button className="mx-2 rounded" variant={"dark"}><Bookmark /></Button>
+                <Link className="bg-black font-semibold text-white rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-900 flex justify-center items-center"><Link2 /></Link>
                 </div>
                 
                 </div>
