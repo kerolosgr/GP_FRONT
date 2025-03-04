@@ -1,11 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Activity, Bookmark, BriefcaseBusiness, Link2, MapPin, SquareArrowOutUpRight, Stars } from "lucide-react";
+import { Activity, Bookmark, BriefcaseBusiness, Check, Link2, MapPin, SquareArrowOutUpRight, Stars } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const JobCard = () => {
     const [isVisible,setisVisible] = useState(false);
+    const [isCopied,setisCopied] = useState(false);
+
+    const handleCopyToClipboard = ()=>{
+        navigator.clipboard.writeText("Kerolos");
+        setisCopied(true);
+        setTimeout(
+            ()=>{setisCopied(false);}
+        ,2000
+    )
+    }
+    
     return (
         <>
             <div onClick={() => setisVisible(true)} className="w-[420px] h-[300px] p-4 flex flex-col justify-start items-start border rounded-xl border-gray-300 hover:shadow transition">
@@ -51,7 +62,7 @@ const JobCard = () => {
                 <div className="mt-10 ml-auto flex justify-center items-center">
                 <Link className="bg-black font-semibold text-white rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-900 flex justify-center items-center"><SquareArrowOutUpRight className="mr-2" size={15} />Apply</Link>
                 <Button className="mx-2 rounded" variant={"dark"}><Bookmark /></Button>
-                <Link className="bg-black font-semibold text-white rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-900 flex justify-center items-center"><Link2 /></Link>
+                <Button onClick={handleCopyToClipboard} className="bg-white font-semibold text-black border rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-50 flex justify-center items-center transition cursor-pointer">{isCopied?<Check />:<Link2 />}</Button>
                 </div>
                 
                 </div>
