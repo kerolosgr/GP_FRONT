@@ -8,6 +8,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import Jobs from "./Jobs";
 import Bookmarks from "./Bookmarks";
+import Courses from "./Courses";
 
 
 
@@ -53,6 +54,8 @@ const SideBar = ()=>{
             {View === "profile" && <Profile />}
             {View === "jobs" && <Jobs />}
             {View === "bookmarks" && <Bookmarks />}
+            {View === "courses" && <Courses />}
+
             </div>
         </div>
         </>
