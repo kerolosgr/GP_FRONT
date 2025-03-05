@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { Book, Earth, IdCard, Mail } from "lucide-react";
+import { Book, Earth, Github, IdCard, Mail } from "lucide-react";
 const Profile = ()=>{
     return(
         <>
@@ -19,7 +19,8 @@ const Profile = ()=>{
 
                     <div className="w-full flex flex-col p-2 gap-y-3 mt-4">
                         <h5 className="font-bold text-xl">Personal Info</h5>
-                    <span className="flex"><IdCard className="mr-2" /><p className="font-bold">532016</p></span>
+                        <span className="flex"><IdCard className="mr-2" /><p className="font-bold">532016</p></span>
+                        <span className="flex"><Github className="mr-2" /><p className="font-semibold">Kerolos Safwat</p></span>
                         <span className="flex"><Mail className="mr-2" /><p>Kerolossafwat41@gmail.com</p></span>
                         <span className="flex"><Earth className="mr-2" /><p>Egypt - Nasr City</p></span>
                         <span className="flex"><Book className="mr-2" /><p>Computer Science</p></span>
@@ -38,7 +39,7 @@ const Profile = ()=>{
                         <Badge variant="dark">NODEJS</Badge>
                         </div>
                     </div>
-                <Button variant={"dark"} className="mt-4 ml-auto mr-4 px-5 rounded">Edit Profile</Button>
+                <Button variant={"dark"} className="mt-1 ml-auto mr-4 px-5 rounded">Edit Profile</Button>
                 </div>
 
                 <div className="w-[calc(100%-500px)] mx-4 h-full bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
