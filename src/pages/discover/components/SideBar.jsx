@@ -60,12 +60,14 @@ const SideBar = ()=>{
                 </Tooltipcustom></span>
 
             </div>
-            <div className={"w-[calc(100%-70px)] flex p-4 bg-[url('/assets/download.svg')] "+`transition-opacity duration-200 ease-in-out ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+            <div className="w-[calc(100%-70px)] h-full bg-[url('/assets/download.svg')]">
+            <div className={"h-full flex p-4 "+`transition-opacity duration-200 ease-in-out ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
             {View === "profile" && <Profile />}
             {View === "jobs" && <Jobs />}
             {View === "bookmarks" && <Bookmarks />}
             {View === "courses" && <Courses />}
 
+            </div>
             </div>
         </div>
         </>
