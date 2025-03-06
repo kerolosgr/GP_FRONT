@@ -1,18 +1,21 @@
+import { ProfileContext } from "@/components/context/ProfileContext";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Book, Earth, Github, IdCard, Mail } from "lucide-react";
+import { useContext } from "react";
 const Profile = ()=>{
-    const GetGithubData = async ()=>{
-        const response = await axios.get("https://api.github.com/users/kerolosgr");
-        return response.data;
-    }
-    const {data,isLoading,error,refetch} = useQuery({
-        queryKey:["profile"],
-        queryFn: GetGithubData
-    });
+    const {profileData,profileLoading,profileError} = useContext(ProfileContext);
+    // const GetGithubData = async ()=>{
+    //     const response = await axios.get("https://api.github.com/users/kerolosgr");
+    //     return response.data;
+    // }
+    // const {data,isLoading,error,refetch} = useQuery({
+    //     queryKey:["profile"],
+    //     queryFn: GetGithubData
+    // });
     // if(!isLoading) console.log(data)
 
     return(
@@ -20,7 +23,7 @@ const Profile = ()=>{
         <div className="flex flex-col justify-start items-center w-[500px] h-fit bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
                     <div className="w-full flex justify-center items-center h-[40%]">
                     <Avatar className="w-[200px] drop-shadow-xl">
-                    <AvatarImage className="rounded-full shadow-lg" src={isLoading?null:data.avatar_url} />
+                    <AvatarImage className="rounded-full shadow-lg" src={profileLoading?null:profileData.avatar_url} />
                     <AvatarFallback><img className="rounded-full shadow-lg" src="/assets/user.webp" /></AvatarFallback>
                     </Avatar>
                     <div>
@@ -32,7 +35,7 @@ const Profile = ()=>{
                     <div className="w-full flex flex-col p-2 gap-y-3 mt-4">
                         <h5 className="font-bold text-xl">Personal Info</h5>
                         <span className="flex"><IdCard className="mr-2" /><p className="font-bold">532016</p></span>
-                        <span className="flex"><Github className="mr-2" /><p className="font-semibold">{isLoading?"Github User":`${data.name} (${data.login})`}</p></span>
+                        <span className="flex"><Github className="mr-2" /><p className="font-semibold">{profileLoading?"Github User":`${profileData.name} (${profileData.login})`}</p></span>
                         <span className="flex"><Mail className="mr-2" /><p>Kerolossafwat41@gmail.com</p></span>
                         <span className="flex"><Earth className="mr-2" /><p>Egypt - Nasr City</p></span>
                         <span className="flex"><Book className="mr-2" /><p>Computer Science</p></span>

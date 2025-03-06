@@ -4,17 +4,19 @@ import { Book, Bookmark, BriefcaseBusiness, Calendar, Earth, IdCard, Mail, Scrol
 import Tooltipcustom from "./Tooltipcustom";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Profile from "./Profile";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { cn } from "@/lib/utils";
 import Jobs from "./Jobs";
 import Bookmarks from "./Bookmarks";
 import Courses from "./Courses";
+import { ProfileContext } from "@/components/context/ProfileContext";
 
 
 
 const SideBar = ()=>{
     const [View,SetView] = useState("profile");
     const [isTransitioning,setisTransitioning] = useState(false);
+    const {profileData,profileLoading,profileError} = useContext(ProfileContext);
     //profile , jobs , courses , papers , conference , bookmarks
     const handleViewChange = (newView) => {
         if (View !== newView) {
@@ -32,8 +34,8 @@ const SideBar = ()=>{
                 <Tooltipcustom message={"Profile"}>
                 <Button onClick={()=>handleViewChange("profile")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "profile" && "bg-gray-800 text-white hover:bg-gray-600")}>
                 <Avatar>
-                <AvatarImage className="rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpNP5uxlf7Af8QWKuzNL1GjZPl712flND8jRCoTGgvB8sQdfdQ2qXrupv0yw0ggGcXBnE&usqp=CAU" />
-                <AvatarFallback></AvatarFallback>
+                <AvatarImage className="rounded-full" src={profileLoading?null:profileData.avatar_url} />
+                <AvatarFallback><img className="rounded-full shadow-lg" src="/assets/user.webp" /></AvatarFallback>
                 </Avatar>
                 </Button>
                 </Tooltipcustom>
