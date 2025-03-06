@@ -16,7 +16,7 @@ import { ProfileContext } from "@/components/context/ProfileContext";
 const SideBar = ()=>{
     const [View,SetView] = useState("profile");
     const [isTransitioning,setisTransitioning] = useState(false);
-    const {profileData,profileLoading,profileError} = useContext(ProfileContext);
+    const {ProfileData,profileLoading,profileError} = useContext(ProfileContext);
     //profile , jobs , courses , papers , conference , bookmarks
     const handleViewChange = (newView) => {
         if (View !== newView) {
@@ -34,7 +34,7 @@ const SideBar = ()=>{
                 <Tooltipcustom message={"Profile"}>
                 <Button onClick={()=>handleViewChange("profile")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "profile" && "bg-gray-800 text-white hover:bg-gray-600")}>
                 <Avatar>
-                <AvatarImage className="rounded-full" src={profileLoading?null:profileData.avatar_url} />
+                <AvatarImage className="rounded-full" src={profileLoading?null:ProfileData.avatar_url} />
                 <AvatarFallback><img className="rounded-full shadow-lg" src="/assets/user.webp" /></AvatarFallback>
                 </Avatar>
                 </Button>
