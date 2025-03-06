@@ -22,7 +22,7 @@ const Profile = ()=>{
         <>
         <div className="flex flex-col justify-start items-center w-[500px] h-fit bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
                     <div className="w-full flex justify-center items-center h-[40%]">
-                    <Avatar className="w-[200px] drop-shadow-xl">
+                    <Avatar className="w-[200px] h-[200px] drop-shadow-xl">
                     <AvatarImage className="rounded-full shadow-lg" src={profileLoading?null:ProfileData.avatar_url} />
                     <AvatarFallback><img className="rounded-full shadow-lg" src="/assets/user.webp" /></AvatarFallback>
                     </Avatar>
