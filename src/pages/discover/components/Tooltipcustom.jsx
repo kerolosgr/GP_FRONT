@@ -4,7 +4,7 @@ const Tooltipcustom = ({children,message})=>{
         <TooltipProvider>
             <Tooltip>
                 <TooltipTrigger className="w-full max-w-full">{children}</TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent side="right">
                 <p>{message}</p>
                 </TooltipContent>
             </Tooltip>
