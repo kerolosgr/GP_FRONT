@@ -65,7 +65,7 @@ const Profile = ()=>{
                 </div>
 
                 <div className="w-[calc(100%-500px)] mx-4 h-full bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
-                    <img src="/assets/res.png" className="w-full h-full object-contain"/>
+                    <img src={ProfileData.resume_image_url} className="w-full h-full object-contain"/>
                 </div>
 
         </>

@@ -24,20 +24,9 @@ const Discover = ()=>{
             "NextJS",
             "MONGO",
             "SQL",
-            "NODEJS",
-            "Python",
-            "Ruby",
-            "VueJS",
-            "Django",
-            "GraphQL",
-            "TypeScript",
-            "Git",
-            "ExpressJS",
-            "PHP",
-            "TailwindCSS",
-            "Jest",
-            "Docker"
+            "NODEJS"
           ],
+        resume_image_url:"/assets/res.png",
     });
     const GetGithubData = async ()=>{
         const response = await axios.get("https://api.github.com/users/kerolosgr");
