@@ -7,11 +7,13 @@ import Navbar from './components/navbar/Navbar'
 import Discover from './pages/discover/Discover'
 import About from './pages/about/About'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Toaster } from './components/ui/sonner'
 
 function App() {
   const client = new QueryClient();
   return (
     <>
+    <Toaster />
     <QueryClientProvider client={client}>
     <BrowserRouter>
     <Navbar/>
