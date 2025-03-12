@@ -3,7 +3,7 @@ import { DialogHeader ,Dialog, DialogContent, DialogDescription, DialogTitle} fr
 import { Input } from "@/components/ui/input";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import Introduction1 from "./Introduction1";
@@ -14,6 +14,7 @@ import Introduction4 from "./Introduction4";
 import Introduction5 from "./Introduction5";
 import Introduction6 from "./Introduction6";
 import axios from "axios";
+import { UserIdContext } from "@/components/context/UserIdContext";
 const ResumeUpload = ()=>{
     const [IsEnterCodeOpened,setIsEnterCodeOpened] = useState(false);
     const [code,setcode]=useState("");
@@ -22,6 +23,7 @@ const ResumeUpload = ()=>{
     const [Introduction,setIntroduction] = useState(1);
     const [Transition,setTransition] = useState(false);
     const [isFinished,setisFinished] = useState(false);
+    const {userId,setuserId} = useContext(UserIdContext);
 
     const handleNextIntroduction = ()=>{
         setTransition(true);
@@ -29,7 +31,7 @@ const ResumeUpload = ()=>{
         setTimeout(
             ()=>{
                 if(isFinished){
-                setIntroduction(7);
+                    Introduction!=7?setIntroduction(7):navigate('/discover/'+userId);
                 }
                 else {
                     if(Introduction != 6){
@@ -53,6 +55,7 @@ const ResumeUpload = ()=>{
                 console.log(res);
                 // setisUploading(false);
                 setisFinished(true);
+                setuserId((res.data.email));
             })
         }
         else{

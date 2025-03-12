@@ -8,11 +8,15 @@ import Discover from './pages/discover/Discover'
 import About from './pages/about/About'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Toaster } from './components/ui/sonner'
+import {UserIdContext} from './components/context/UserIdContext'
+import { useState } from 'react'
 
 function App() {
   const client = new QueryClient();
+  const [userId,setuserId] = useState("");
   return (
     <>
+    <UserIdContext.Provider value={{userId,setuserId}}>
     <Toaster />
     <QueryClientProvider client={client}>
     <BrowserRouter>
@@ -25,6 +29,7 @@ function App() {
     </Routes>
     </BrowserRouter>
     </QueryClientProvider>
+    </UserIdContext.Provider>
     </>
   )
 }
