@@ -51,8 +51,8 @@ const ResumeUpload = ()=>{
             console.log(form);
             axios.post('http://web.kerolos-safwat.me/nlp/',form).then((res)=>{
                 console.log(res);
-                setisUploading(false);
-                setisFinished(true)
+                // setisUploading(false);
+                setisFinished(true);
             })
         }
         else{
