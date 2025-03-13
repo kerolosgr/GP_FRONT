@@ -13,6 +13,14 @@ export default defineConfig({
     ],
     port: 3001,  // Set the port to 3001
   },
+  preview: {
+    allowedHosts: [
+      'api.kerolos-safwat.me', // Add your host here
+      'localhost', // Allow localhost
+      '127.0.0.1', // Allow local IP
+    ],
+    port: 3001, // Specify the port here
+  },
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
