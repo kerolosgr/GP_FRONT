@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 // import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { Book, Bookmark, BriefcaseBusiness, Calendar, Earth, IdCard, Mail, Scroll, Star, Video } from "lucide-react";
+import { Book, Bookmark, BriefcaseBusiness, Calendar, Code, Earth, IdCard, Mail, Scroll, Star, Video } from "lucide-react";
 import Tooltipcustom from "./Tooltipcustom";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Profile from "./Profile";
@@ -10,6 +10,7 @@ import Jobs from "./Jobs";
 import Bookmarks from "./Bookmarks";
 import Courses from "./Courses";
 import { ProfileContext } from "@/components/context/ProfileContext";
+import CodeEditor from "./CodeEditor";
 
 
 
@@ -56,6 +57,12 @@ const SideBar = ()=>{
                 <Button onClick={()=>handleViewChange("conference")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "conference" && "bg-gray-800 text-white hover:bg-gray-600")}><Calendar /></Button>
                 </Tooltipcustom>
 
+                <hr className="my-2 border-1 border-gray-300 w-full" />
+
+                <Tooltipcustom message={"Code Editor"}>
+                <Button onClick={()=>handleViewChange("editor")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "editor" && "bg-gray-800 text-white hover:bg-gray-600")}><Code /></Button>
+                </Tooltipcustom>
+
                 <span className="w-full mt-auto">
                 <Tooltipcustom message={"Bookmarks"}>
                 <Button onClick={()=>handleViewChange("bookmarks")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "bookmarks" && "bg-gray-800 text-white hover:bg-gray-600")}><Bookmark /></Button>
@@ -68,6 +75,7 @@ const SideBar = ()=>{
             {View === "jobs" && <Jobs />}
             {View === "bookmarks" && <Bookmarks />}
             {View === "courses" && <Courses />}
+            {View === "editor" && <CodeEditor />}
 
             </div>
             </div>
