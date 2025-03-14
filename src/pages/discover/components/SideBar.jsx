@@ -60,7 +60,7 @@ const SideBar = ()=>{
                 <hr className="my-2 border-1 border-gray-300 w-full" />
 
                 <Tooltipcustom message={"Code Editor"}>
-                <Button onClick={()=>handleViewChange("editor")} variant={"light"} className={"w-full h-[50px] relative "+ cn(View === "editor" && "bg-gray-800 text-white hover:bg-gray-600")}><Code /> <Sparkles className="absolute top-0 right-0" color="#2cff50" fill="#2cff50" /></Button>
+                <Button onClick={()=>handleViewChange("editor")} variant={"light"} className={"w-full h-[50px] relative "+ cn(View === "editor" && "bg-gray-800 text-white hover:bg-gray-600")}><Code /> <Sparkles className="absolute top-1 right-1" color="#2cff50" fill="#2cff50" /></Button>
                 </Tooltipcustom>
 
                 <span className="w-full mt-auto">
