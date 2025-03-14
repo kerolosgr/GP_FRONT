@@ -70,7 +70,7 @@ const CodeEditor = ()=>{
                         <p className="text-white font-mono">...</p>
                         :
                         <>
-                        <p className="text-white font-mono">{output}</p>
+                        <p className="text-white font-mono" style={{ whiteSpace: 'pre-line' }}>{output}</p>
                         <p className="text-red-500 font-mono">{outputerrors}</p>
                         </>
                     }
