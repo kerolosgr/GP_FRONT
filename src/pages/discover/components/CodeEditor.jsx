@@ -13,6 +13,7 @@ const CodeEditor = ()=>{
     const [output,setoutput]=useState('');
     const [outputerrors,setoutputerrors]=useState('');
     const [executing,setexecuting] = useState(false);
+    const [isFailed,setisFailed] = useState(false);
     
     const handleSelectChange = (value) => {
     setSelectedLanguage(value);
@@ -35,6 +36,13 @@ const CodeEditor = ()=>{
             setoutput(res.data.run.stdout);
             setoutputerrors(res.data.run.stderr);
             setexecuting(false);
+        }
+    ).catch(
+        (error)=>{
+            setexecuting(false);
+            if(error.response && error.response.status === 404){
+                setisFailed(true);
+            }
         }
     )
     };
@@ -72,6 +80,7 @@ const CodeEditor = ()=>{
                         <>
                         <p className="text-white font-mono" style={{ whiteSpace: 'pre-line' }}>{output}</p>
                         <p className="text-red-500 font-mono">{outputerrors}</p>
+                        {isFailed?<p className="text-yellow-400 font-mono">Couldn't Execute the code</p>:null}
                         </>
                     }
                     
