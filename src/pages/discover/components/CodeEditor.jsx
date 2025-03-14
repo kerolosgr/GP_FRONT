@@ -63,7 +63,7 @@ const CodeEditor = ()=>{
             <Editor height="91%" theme="vs-light" onChange={handleChangeCode} defaultLanguage="javascript" defaultValue="//Write some Javascript" />
             </div>
             <div className="w-full h-[30%] p-4">
-                <Button variant={"dark"} className={"m-2"} onClick={()=>executeCode(selectedLanguage,selectedVersion,code)}>Run</Button>
+                <Button variant={"dark"} className={"m-2 px-10"} onClick={()=>executeCode(selectedLanguage,selectedVersion,code)}>Run</Button>
                 <div className="h-[80%] max-h-[88%] w-full border-1 bg-black border-gray-300 rounded-lg p-4 text-[12px] overflow-y-scroll">
                     {
                         executing?
