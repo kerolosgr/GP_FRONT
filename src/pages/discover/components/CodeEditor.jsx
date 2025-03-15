@@ -9,7 +9,7 @@ import { useState } from "react";
 const CodeEditor = ()=>{
     const [selectedLanguage, setSelectedLanguage] = useState('javascript');
     const [selectedVersion, setSelectedVersion] = useState('18.15.0');
-    const [code,setCode] = useState('');
+    const [code,setCode] = useState("console.log('hello world');");
     const [output,setoutput]=useState('');
     const [outputerrors,setoutputerrors]=useState('');
     const [executing,setexecuting] = useState(false);
@@ -68,7 +68,7 @@ const CodeEditor = ()=>{
                 )}
             </SelectContent>
             </Select>
-            <Editor height="91%" theme="vs-light" onChange={handleChangeCode} defaultLanguage="javascript" defaultValue="//Write some Javascript" />
+            <Editor height="91%" theme="vs-light" onChange={handleChangeCode} defaultLanguage="javascript" defaultValue={code} />
             </div>
             <div className="w-full h-[30%] p-4">
                 <Button variant={"dark"} className={"m-2 px-10"} onClick={()=>executeCode(selectedLanguage,selectedVersion,code)}>Run</Button>
