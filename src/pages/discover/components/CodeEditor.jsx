@@ -9,7 +9,7 @@ import { useState } from "react";
 const CodeEditor = ()=>{
     const [selectedLanguage, setSelectedLanguage] = useState('javascript');
     const [selectedVersion, setSelectedVersion] = useState('18.15.0');
-    const [code,setCode] = useState("console.log('hello world');");
+    const [code,setCode] = useState("//Delete This Line and start your code");
     const [output,setoutput]=useState('');
     const [outputerrors,setoutputerrors]=useState('');
     const [executing,setexecuting] = useState(false);
@@ -48,7 +48,13 @@ const CodeEditor = ()=>{
     };
 
     const languages = [
-        { language: 'javascript', version: '18.15.0' }
+        { language: 'javascript', version: '18.15.0' },
+        { language: 'java', version: '15.0.2' },
+        { language: 'php', version: '8.2.3' },
+        { language: 'python', version: '3.10.0' },
+        { language: 'typescript', version: '5.0.3' },
+        { language: 'c', version: '10.2.0' },
+        { language: 'c++', version: '10.2.0' },
     ];
 
     const handleChangeCode = (value)=>{
@@ -68,7 +74,7 @@ const CodeEditor = ()=>{
                 )}
             </SelectContent>
             </Select>
-            <Editor height="91%" theme="vs-light" onChange={handleChangeCode} defaultLanguage="javascript" defaultValue={code} />
+            <Editor height="91%" theme="vs-light" onChange={handleChangeCode} defaultLanguage={selectedLanguage} language={selectedLanguage} defaultValue={code} />
             </div>
             <div className="w-full h-[30%] p-4">
                 <Button variant={"dark"} className={"m-2 px-10"} onClick={()=>executeCode(selectedLanguage,selectedVersion,code)}>Run</Button>
