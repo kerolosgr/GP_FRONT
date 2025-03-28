@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 // import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { Book, Bookmark, BriefcaseBusiness, Calendar, Code, Earth, IdCard, Mail, Scroll, Sparkles, Star, Video } from "lucide-react";
+import { Book, Bookmark, BriefcaseBusiness, Calendar, Code, Earth, Github, IdCard, Mail, Scroll, Sparkles, Star, Video } from "lucide-react";
 import Tooltipcustom from "./Tooltipcustom";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Profile from "./Profile";
@@ -11,6 +11,7 @@ import Bookmarks from "./Bookmarks";
 import Courses from "./Courses";
 import { ProfileContext } from "@/components/context/ProfileContext";
 import CodeEditor from "./CodeEditor";
+import GithubRepos from "./GithubRepos";
 
 
 
@@ -57,6 +58,10 @@ const SideBar = ()=>{
                 <Button onClick={()=>handleViewChange("conference")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "conference" && "bg-gray-800 text-white hover:bg-gray-600")}><Calendar /></Button>
                 </Tooltipcustom>
 
+                <Tooltipcustom message={"Github"}>
+                <Button onClick={()=>handleViewChange("github")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "github" && "bg-gray-800 text-white hover:bg-gray-600")}><Github /></Button>
+                </Tooltipcustom>
+
                 <hr className="my-2 border-1 border-gray-300 w-full" />
 
                 <Tooltipcustom message={"Code Editor"}>
@@ -75,6 +80,7 @@ const SideBar = ()=>{
             {View === "jobs" && <Jobs />}
             {View === "bookmarks" && <Bookmarks />}
             {View === "courses" && <Courses />}
+            {View === "github" && <GithubRepos />}
             {View === "editor" && <CodeEditor />}
 
             </div>

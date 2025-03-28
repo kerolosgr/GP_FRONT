@@ -12,7 +12,7 @@ const Discover = ()=>{
         job_title:"Software Engineer",
         avatar_url:"",
         github_name:"",
-        github_login:"",
+        github_login:"kerolosgreen",
         email:"Kerolossafwat41@gmail.com",
         location:"Egypt - Nasr City",
         education:"Computer Science",
@@ -29,7 +29,7 @@ const Discover = ()=>{
         resume_image_url:"/assets/res.png",
     });
     const GetGithubData = async ()=>{
-        const response = await axios.get("https://api.github.com/users/kerolosgr");
+        const response = await axios.get(`https://api.github.com/users/${ProfileData.github_login}`);
         return response.data;
     }
     const {data:fetchedgithubdata,isLoading:profileLoading,error:profileError,refetch} = useQuery({
@@ -39,7 +39,7 @@ const Discover = ()=>{
     useEffect(
         ()=>{
             if(fetchedgithubdata && !profileLoading && !profileError){
-                setProfileData((prev)=>({...prev,avatar_url:fetchedgithubdata.avatar_url,github_name:fetchedgithubdata.name,github_login:fetchedgithubdata.login}))
+                setProfileData((prev)=>({...prev,avatar_url:fetchedgithubdata.avatar_url,github_name:fetchedgithubdata.name}))
             }
         },[fetchedgithubdata,profileLoading,profileError]
     )
