@@ -19,7 +19,7 @@ const JobCard = () => {
     
     return (
         <>
-            <div onClick={() => setisVisible(true)} className="w-[420px] h-[300px] p-4 flex flex-col justify-start items-start border rounded-xl border-gray-300 hover:shadow transition">
+            <div onClick={() => setisVisible(true)} className="w-full md:w-[420px] h-[300px] p-4 flex flex-col justify-start items-start border rounded-xl border-gray-300 hover:shadow transition">
                 <div className="w-full flex justify-between items-center">
                     <div>
                         <h5 className="font-semibold text-[18px] my-2">Software Engineer</h5>
@@ -36,7 +36,7 @@ const JobCard = () => {
                     <p>Full-time</p>
                     <p>Remote</p>
                 </div>
-                <p className="mt-2 text-[12px] font-semibold text-gray-700 line-clamp-5">Join Advansys as a Software Engineer Intern and gain hands-on experience in a fast-paced and innovative environment. You'll work alongside experienced engineers and contribute to various software development projects, enhancing your technical skills while learning about real-world applications.Join Advansys as a Software Engineer Intern and gain hands-on experience in a fast-paced and innovative environment. You'll work alongside experienced engineers and contribute to various software development projects, enhancing your technical skills while learning about real-world applications.</p>
+                <p className="mt-2 text-[12px] font-semibold text-gray-700 line-clamp-4 md:line-clamp-5">Join Advansys as a Software Engineer Intern and gain hands-on experience in a fast-paced and innovative environment. You'll work alongside experienced engineers and contribute to various software development projects, enhancing your technical skills while learning about real-world applications.Join Advansys as a Software Engineer Intern and gain hands-on experience in a fast-paced and innovative environment. You'll work alongside experienced engineers and contribute to various software development projects, enhancing your technical skills while learning about real-world applications.</p>
             </div>
             <Dialog open={isVisible} onOpenChange={setisVisible}>
             <DialogContent className="min-w-[1020px] min-h-[50vh] max-h-[80vh]">

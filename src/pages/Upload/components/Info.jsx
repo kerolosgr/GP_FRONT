@@ -7,13 +7,13 @@ const Info = ()=>{
             
             <img className="my-5" src="/assets/find-3d.png" width={400} height={400}/>
             
-            <div className="relative w-[60%] flex justify-center">
+            <div className="relative w-[80%] md:w-[60%] flex justify-center">
                 <span className="block w-full h-[2px] bg-black"></span>
                 <span className="bg-black text-white absolute top-1/2 left-0 transform text-[12px] -translate-x-1/2 -translate-y-1/2 px-3 py-1 rounded-full">1</span>
                 <span className="bg-black text-white absolute top-1/2 left-1/2 transform text-[12px] -translate-x-1/2 -translate-y-1/2 px-3 py-1 rounded-full">2</span>
                 <span className="bg-black text-white absolute top-1/2 right-0 transform text-[12px] -translate-x-0 -translate-y-1/2 px-3 py-1 rounded-full">3</span>
             </div>
-            <div className="w-[65%] grid grid-cols-3 mt-[20px] font-semibold">
+            <div className="w-[95%] md:w-[65%] grid grid-cols-3 mt-[20px] font-semibold text-[15px] md:text-[16px]">
                 <h4 className="col-span-1 text-left">Upload Your Resume</h4>
                 <h4 className="col-span-1 text-center">We Find The Best For You</h4>
                 <h4 className="col-span-1 text-right">Recieve Tailored Recommendations</h4>

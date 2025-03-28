@@ -65,16 +65,16 @@ const ResumeUpload = ()=>{
 
     return(
         <>
-        <div className="flex justify-evenly items-center py-4">
+        <div className="flex flex-col md:flex-row justify-evenly items-center py-4">
         <div className="flex flex-col justify-center items-center">
         <h1 className="text-2xl font-bold my-6">Step 1: Upload Your Resume</h1>
-        <label  className="flex flex-col justify-center items-center border-dashed border-2 border-gray-500 bg-neutral-50 w-[500px] h-[250px] rounded-lg cursor-pointer hover:bg-white transition duration-400" htmlFor="resume">
+        <label  className="flex flex-col justify-center items-center border-dashed border-2 border-gray-500 bg-neutral-50 w-[300px] md:w-[500px] h-[250px] rounded-lg cursor-pointer hover:bg-white transition duration-400" htmlFor="resume">
         {/* <CloudUpload size={50} /> */}
         <img src="/assets/file.webp" width={100} height={100} />
         <span className="text-gray-700 text-center">Drag and drop your resume here or click to browse <p className="text-[12px]">Make Sure your resume is in pdf format</p></span>
         </label>
         <input className="hidden" type="file" id="resume" name="resume" onChange={handleUploadFile}/>
-        <h5 className="my-4">Already Uploaded Your Resume ? <Button className={"ml-2"} onClick={()=>setIsEnterCodeOpened(!IsEnterCodeOpened)} variant={"dark"}>Enter Your Code</Button></h5>
+        <h5 className="my-4 w-[80%]">Already Uploaded Your Resume ? <Button className={"md:ml-2 md:mt-0 mt-2"} onClick={()=>setIsEnterCodeOpened(!IsEnterCodeOpened)} variant={"dark"}>Enter Your Code</Button></h5>
         </div>
         <img src="/assets/laptop.webp" width={500} height={500}/>
         </div>
@@ -105,14 +105,14 @@ const ResumeUpload = ()=>{
         </Dialog>
 
         <Dialog open={isUploading}>
-        <DialogContent className="min-w-[800px] h-[98vh] flex flex-col">
+        <DialogContent className="min-w-full md:min-w-[800px] h-[95vh] md:h-[98vh] flex flex-col">
             <DialogHeader>
             <DialogTitle>Uploading And Processing Your Resume</DialogTitle>
             <DialogDescription>
             Please wait while we are uploading and processing your resume.
             </DialogDescription>
             </DialogHeader>
-            <div className={"flex h-full items-center justify-center"+`transition-opacity duration-500 ease-in-out ${Transition ? 'opacity-0' : 'opacity-100'}`}>
+            <div className={"flex h-full items-center justify-center overflow-auto "+`transition-opacity duration-500 ease-in-out ${Transition ? 'opacity-0' : 'opacity-100'}`}>
                 {Introduction==1&&<Introduction1/>}
                 {Introduction==2&&<Introduction2/>}
                 {Introduction==3&&<Introduction3/>}

@@ -19,8 +19,8 @@ const Profile = ()=>{
     // if(!isLoading) console.log(data)
 
     return(
-        <>
-        <div className="flex flex-col justify-start items-center w-[500px] h-fit bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
+        <div className="w-full flex flex-col md:flex-row">
+        <div className="flex flex-col justify-start items-center w-full md:w-[500px] h-fit bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
                     <div className="w-full flex justify-center items-center h-[40%]">
                     <Avatar className="w-[200px] h-[200px] drop-shadow-xl">
                     <AvatarImage className="rounded-full shadow-lg" src={profileLoading?null:ProfileData.avatar_url} />
@@ -64,11 +64,11 @@ const Profile = ()=>{
                 <Button variant={"dark"} className="mt-1 ml-auto mr-4 px-5 rounded">Edit Profile</Button>
                 </div>
 
-                <div className="w-[calc(100%-500px)] mx-4 h-full bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
+                <div className="w-full md:w-[calc(100%-500px)] md:mx-4 md:mt-0 mt-2 h-full bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
                     <img src={ProfileData.resume_image_url} className="w-full h-full object-contain"/>
                 </div>
 
-        </>
+        </div>
     )
 }
 export default Profile;
