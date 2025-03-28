@@ -18,7 +18,7 @@ const GithubRepos = ()=>{
     });
 
     return(
-        <div className="w-full h-full flex flex-col justify-start items-start p-4 rounded-xl bg-neutral-50 overflow-x-auto">
+        <div className="w-full h-full flex flex-wrap gap-2 justify-start items-start p-4 rounded-xl bg-neutral-50 overflow-x-auto">
             {
                 isLoading?
                 <h2 className="text-3xl font-semibold text-center">loading...</h2>
