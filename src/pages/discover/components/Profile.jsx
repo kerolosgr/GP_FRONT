@@ -64,7 +64,7 @@ const Profile = ()=>{
                 <Button variant={"dark"} className="mt-1 ml-auto mr-4 px-5 rounded">Edit Profile</Button>
                 </div>
 
-                <div className="w-full md:w-[calc(100%-500px)] md:mx-4 md:mt-0 mt-2 h-full bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
+                <div className="w-full md:w-fit md:mx-4 md:mt-0 mt-2 h-full bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
                     <img src={ProfileData.resume_image_url} className="w-full h-full object-contain"/>
                 </div>
 
