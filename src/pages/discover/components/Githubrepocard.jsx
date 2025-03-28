@@ -5,7 +5,7 @@ import { format,formatDistance,formatDate,subDays } from "date-fns"
 
 const Githubrepocard = ({repoName,repoLanguage,repoDate,repoUrl})=>{
     return(
-        <div className="w-[450px] h-[150px] my-1 p-1 md:p-4 flex flex-col md:flex-row flex-shrink-0 justify-start items-start rounded-lg border border-gray-300">
+        <div className="w-full md:w-[450px] h-[150px] my-1 p-4 flex flex-col md:flex-row flex-shrink-0 justify-start items-start rounded-lg border border-gray-300">
             <div className="flex flex-col justify-start items-start w-[70%] h-full">
             <h4 className="text-[21px] font-semibold text-neutral-700 line-clamp-2">{repoName}</h4>
             <span className="flex items-center mt-2 gap-1.5">
