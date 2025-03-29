@@ -3,6 +3,7 @@ import Githubrepocard from "./Githubrepocard";
 import axios from "axios";
 import { useContext } from "react";
 import { ProfileContext } from "@/components/context/ProfileContext";
+import GithubrepocardSkeleton from "./GithubrepocardSkeleton";
 
 const GithubRepos = ()=>{
     const {ProfileData} = useContext(ProfileContext);
@@ -21,7 +22,9 @@ const GithubRepos = ()=>{
         <div className="w-full h-full flex flex-wrap gap-2 justify-start items-start p-4 rounded-xl bg-neutral-50 overflow-x-auto">
             {
                 isLoading?
-                <h2 className="text-3xl font-semibold text-center">loading...</h2>
+                Array.from({length:8}).map(
+                    (i,_)=> <GithubrepocardSkeleton key={_}/>
+                )
                 :
                 error?
                 <h2 className="text-3xl font-semibold text-center">{error.message}</h2>
