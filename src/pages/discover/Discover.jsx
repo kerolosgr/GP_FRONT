@@ -31,23 +31,28 @@ const Discover = ()=>{
     //       ],
     //     resume_image_url:"/assets/res.png",
     // });
+    if(localStorage.getItem("userSavedId")) navigate('/discover/'+localStorage.getItem("userSavedId"));
     if(userId== undefined) navigate('/start');
     const fetchUserProfile = async ()=>{
-        const response = await axios.get(`https://lin.kerolos-safwat.me/getuser/${userId}`).catch(
-            (err)=>{
-                if(err.status==400){
-                    toast("We couldn't find your user. Please try again or create a new profile.");
-                    navigate('/start');
-                }
-            }
-        );
+        try{
+        const response = await axios.get(`https://lin.kerolos-safwat.me/getuser/${userId}`);
+        localStorage.setItem('userSavedId',response.data.id);
+        console.log(localStorage);
         return response.data;
+        }
+        catch(err){
+            if(err.status==400){
+                toast("We couldn't find your user. Please try again or create a new profile.");
+                navigate('/start');
+            }
+            return null;
+        }  
     };
+
 
     const fetchedgithubdata = async ()=>{
         if(ProfileData?.github_login){ 
             const res =  await axios.get(`https://api.github.com/users/${ProfileData?.github_login}`);
-            console.log(res.data);
             return res.data;
         }
         return null;
