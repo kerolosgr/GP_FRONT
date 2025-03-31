@@ -3,51 +3,96 @@ import SideBar from "./components/SideBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { data } from "react-router-dom";
+import { data, useNavigate, useParams } from "react-router-dom";
+import { toast } from "sonner";
 
 const Discover = ()=>{
-    const [ProfileData,setProfileData] = useState({
-        id:"52146",
-        name:"Kerolos Safwat",
-        job_title:"Software Engineer",
-        avatar_url:"",
-        github_name:"",
-        github_login:"kerolosgreen",
-        email:"Kerolossafwat41@gmail.com",
-        location:"Egypt - Nasr City",
-        education:"Computer Science",
-        skills: [
-            "Javascript",
-            "HTML",
-            "CSS",
-            "ReactJS",
-            "NextJS",
-            "MONGO",
-            "SQL",
-            "NODEJS"
-          ],
-        resume_image_url:"/assets/res.png",
-    });
-    const GetGithubData = async ()=>{
-        const response = await axios.get(`https://api.github.com/users/${ProfileData.github_login}`);
-        return response.data;
-    }
-    const {data:fetchedgithubdata,isLoading:profileLoading,error:profileError,refetch} = useQuery({
-        queryKey:["profile"],
-        queryFn: GetGithubData
-    });
-    useEffect(
-        ()=>{
-            if(fetchedgithubdata && !profileLoading && !profileError){
-                setProfileData((prev)=>({...prev,avatar_url:fetchedgithubdata.avatar_url,github_name:fetchedgithubdata.name}))
+    const navigate = useNavigate();
+    const {userId} = useParams();
+    // const [ProfileData,setProfileData] = useState({
+    //     id:"52146",
+    //     name:"Kerolos Safwat",
+    //     job_title:"Software Engineer",
+    //     avatar_url:"",
+    //     github_name:"",
+    //     github_login:"kerolosgreen",
+    //     email:"Kerolossafwat41@gmail.com",
+    //     location:"Egypt - Nasr City",
+    //     education:"Computer Science",
+    //     skills: [
+    //         "Javascript",
+    //         "HTML",
+    //         "CSS",
+    //         "ReactJS",
+    //         "NextJS",
+    //         "MONGO",
+    //         "SQL",
+    //         "NODEJS"
+    //       ],
+    //     resume_image_url:"/assets/res.png",
+    // });
+    if(userId== undefined) navigate('/start');
+    const fetchUserProfile = async ()=>{
+        const response = await axios.get(`https://lin.kerolos-safwat.me/getuser/${userId}`).catch(
+            (err)=>{
+                if(err.status==400){
+                    toast("We couldn't find your user. Please try again or create a new profile.");
+                    navigate('/start');
+                }
             }
-        },[fetchedgithubdata,profileLoading,profileError]
-    )
+        );
+        return response.data;
+    };
+
+    const fetchedgithubdata = async ()=>{
+        if(ProfileData?.github_login){ 
+            const res =  await axios.get(`https://api.github.com/users/${ProfileData?.github_login}`);
+            console.log(res.data);
+            return res.data;
+        }
+        return null;
+    }
+
+    const {data: ProfileData, isLoading:profileLoading, error:profileError} = useQuery({
+        queryKey:["profile",userId],
+        queryFn: fetchUserProfile
+    });
+
+    const {data: ProfileGithubData,isLoading:githubLoading,error:githubError} = useQuery({
+        queryKey:["github",ProfileData?.github_login],
+        queryFn: fetchedgithubdata,
+        enabled:!!ProfileData?.github_login
+    });
+
+    // console.log(githubLoading);
+
+    // const GetGithubData = async ()=>{
+    //     const response = await axios.get(`https://api.github.com/users/${ProfileData.github_login}`);
+    //     return response.data;
+    // }
+    // const {data:fetchedgithubdata,isLoading:profileLoading,error:profileError,refetch} = useQuery({
+    //     queryKey:["profile"],
+    //     queryFn: GetGithubData
+    // });
+
+    // useEffect(
+    //     ()=>{
+    //         if(fetchedgithubdata && !profileLoading && !profileError){
+    //             setProfileData((prev)=>({...prev,avatar_url:fetchedgithubdata.avatar_url,github_name:fetchedgithubdata.name}))
+    //         }
+    //     },[fetchedgithubdata,profileLoading,profileError]
+    // )
     
     return(
         <>
-        <ProfileContext.Provider value={{ProfileData,profileLoading,profileError}}>
-        <SideBar/>
+        <ProfileContext.Provider value={{ProfileData,profileLoading,profileError,ProfileGithubData,githubLoading,githubError}}>
+            {
+                profileLoading?
+                null
+                :
+                <SideBar/>
+            }
+        
         </ProfileContext.Provider>
         </>
     )

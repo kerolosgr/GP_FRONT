@@ -7,7 +7,7 @@ import axios from "axios";
 import { Book, Earth, Github, IdCard, Mail } from "lucide-react";
 import { useContext } from "react";
 const Profile = ()=>{
-    const {ProfileData,profileLoading,profileError} = useContext(ProfileContext);
+    const {ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData} = useContext(ProfileContext);
     // const GetGithubData = async ()=>{
     //     const response = await axios.get("https://api.github.com/users/kerolosgr");
     //     return response.data;
@@ -23,7 +23,7 @@ const Profile = ()=>{
         <div className="flex flex-col justify-start items-center w-full md:w-[500px] h-fit bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
                     <div className="w-full flex justify-center items-center h-[40%]">
                     <Avatar className="w-[200px] h-[200px] drop-shadow-xl">
-                    <AvatarImage className="rounded-full shadow-lg" src={profileLoading?null:ProfileData.avatar_url} />
+                    <AvatarImage className="rounded-full shadow-lg" src={githubLoading?null:ProfileGithubData?.avatar_url} />
                     <AvatarFallback><img className="rounded-full shadow-lg" src="/assets/user.webp" /></AvatarFallback>
                     </Avatar>
                     <div>
@@ -35,7 +35,7 @@ const Profile = ()=>{
                     <div className="w-full flex flex-col p-2 gap-y-3 mt-4">
                         <h5 className="font-bold text-xl">Personal Info</h5>
                         <span className="flex"><IdCard className="mr-2" /><p className="font-bold">{ProfileData.id}</p></span>
-                        <span className="flex"><Github className="mr-2" /><p className="font-semibold">{profileLoading?"Github User":`${ProfileData.github_name} (${ProfileData.github_login})`}</p></span>
+                        <span className="flex"><Github className="mr-2" /><p className="font-semibold">{profileLoading?"Github User":`${ProfileGithubData?.name} (${ProfileData.github_login})`}</p></span>
                         <span className="flex"><Mail className="mr-2" /><p>{ProfileData.email}</p></span>
                         <span className="flex"><Earth className="mr-2" /><p>{ProfileData.location}</p></span>
                         <span className="flex"><Book className="mr-2" /><p>{ProfileData.education}</p></span>
