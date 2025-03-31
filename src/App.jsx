@@ -14,9 +14,10 @@ import { useState } from 'react'
 function App() {
   const client = new QueryClient();
   const [userId,setuserId] = useState("");
+  const [showDiscover,setshowDiscover] = useState(localStorage.getItem("userSavedId")?true:false);
   return (
     <>
-    <UserIdContext.Provider value={{userId,setuserId}}>
+    <UserIdContext.Provider value={{userId,setuserId,showDiscover,setshowDiscover}}>
     <Toaster />
     <QueryClientProvider client={client}>
     <BrowserRouter>

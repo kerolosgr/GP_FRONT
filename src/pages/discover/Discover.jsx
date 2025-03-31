@@ -1,14 +1,16 @@
 import { ProfileContext } from "@/components/context/ProfileContext";
 import SideBar from "./components/SideBar";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { data, useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
+import { UserIdContext } from "@/components/context/UserIdContext";
 
 const Discover = ()=>{
     const navigate = useNavigate();
     const {userId} = useParams();
+    const {setshowDiscover}=useContext(UserIdContext);
     // const [ProfileData,setProfileData] = useState({
     //     id:"52146",
     //     name:"Kerolos Safwat",
@@ -31,19 +33,21 @@ const Discover = ()=>{
     //       ],
     //     resume_image_url:"/assets/res.png",
     // });
-    if(localStorage.getItem("userSavedId")) navigate('/discover/'+localStorage.getItem("userSavedId"));
+    // console.log(localStorage.getItem("userSavedId"));x
+    
     if(userId== undefined) navigate('/start');
     const fetchUserProfile = async ()=>{
         try{
         const response = await axios.get(`https://lin.kerolos-safwat.me/getuser/${userId}`);
         localStorage.setItem('userSavedId',response.data.id);
-        console.log(localStorage);
+        setshowDiscover(true);
         return response.data;
         }
         catch(err){
             if(err.status==400){
                 toast("We couldn't find your user. Please try again or create a new profile.");
                 navigate('/start');
+                setshowDiscover(false);
             }
             return null;
         }  
