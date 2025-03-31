@@ -35,7 +35,7 @@ const Profile = ()=>{
                     <div className="w-full flex flex-col p-2 gap-y-3 mt-4">
                         <h5 className="font-bold text-xl">Personal Info</h5>
                         <span className="flex"><IdCard className="mr-2" /><p className="font-bold">{ProfileData.id}</p></span>
-                        <span className="flex"><Github className="mr-2" /><p className="font-semibold">{profileLoading?"Github User":`${ProfileGithubData?.name} (${ProfileData.github_login})`}</p></span>
+                        <span className="flex"><Github className="mr-2" /><p className="font-semibold">{ProfileData.github_login?(githubLoading?"Github User":`${ProfileGithubData?.name} (${ProfileData.github_login})`):"Not Set Yet"}</p></span>
                         <span className="flex"><Mail className="mr-2" /><p>{ProfileData.email}</p></span>
                         <span className="flex"><Earth className="mr-2" /><p>{ProfileData.location}</p></span>
                         <span className="flex"><Book className="mr-2" /><p>{ProfileData.education}</p></span>

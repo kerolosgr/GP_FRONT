@@ -4,6 +4,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { ProfileContext } from "@/components/context/ProfileContext";
 import GithubrepocardSkeleton from "./GithubrepocardSkeleton";
+import { Button } from "@/components/ui/button";
 
 const GithubRepos = ()=>{
     const {ProfileData} = useContext(ProfileContext);
@@ -34,7 +35,13 @@ const GithubRepos = ()=>{
                     (repo)=> <Githubrepocard key={repo.id} repoName={repo.name} repoLanguage={repo.language} repoDate={repo.updated_at} repoUrl={repo.html_url}/>
                 )
                 :
+                ProfileData.github_login?
                 <h2 className="text-3xl font-semibold text-center">No repositories found</h2>
+                :
+                <div className="w-full h-full flex flex-col justify-center items-center">
+                <h2 className="font-semibold text-center">Please Set your github username first</h2>
+                <Button className={"my-4"} variant={"dark"}>Add Github</Button>
+                </div>
             }
         </div>
     )
