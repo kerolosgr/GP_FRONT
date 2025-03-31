@@ -97,7 +97,7 @@ const Discover = ()=>{
         <ProfileContext.Provider value={{ProfileData,profileLoading,profileError,ProfileGithubData,githubLoading,githubError}}>
             {
                 profileLoading?
-                null
+                <div className="w-full h-[calc(100vh-100px)] flex justify-center items-center text-2xl font-bold font-sans text-amber-700 shadow-[0_0_10px] bg-amber-200">Loading...</div>
                 :
                 <SideBar/>
             }
