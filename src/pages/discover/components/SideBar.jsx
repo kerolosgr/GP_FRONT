@@ -37,7 +37,7 @@ const SideBar = ()=>{
                 <Button onClick={()=>handleViewChange("profile")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "profile" && "bg-gray-800 text-white hover:bg-gray-600")}>
                 <Avatar>
                 <AvatarImage className="rounded-full" src={githubLoading?null:ProfileGithubData?.avatar_url} />
-                <AvatarFallback><img className="rounded-full shadow-lg" src="/assets/user.webp" /></AvatarFallback>
+                <AvatarFallback><img className="rounded-full shadow-lg" src="/assets/Cute Avatar.png" /></AvatarFallback>
                 </Avatar>
                 </Button>
                 </Tooltipcustom>
