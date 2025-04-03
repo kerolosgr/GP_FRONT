@@ -27,8 +27,8 @@ const Profile = ()=>{
                     <AvatarFallback><img className="rounded-full shadow-lg" src="/assets/user.webp" /></AvatarFallback>
                     </Avatar>
                     <div>
-                    <h2 className="ml-4 text-3xl font-bold font-sans">Kerolos Safwat</h2>
-                    <span className="ml-4 text-sm font-medium font-sans">Software Engineer</span>
+                    <h2 className="ml-4 text-3xl font-bold font-sans">{ProfileData?.name}</h2>
+                    <span className="ml-4 text-sm font-medium font-sans">{ProfileData?.job_title}</span>
                     </div>
                     </div>
 
