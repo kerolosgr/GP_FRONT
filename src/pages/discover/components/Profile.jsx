@@ -24,7 +24,7 @@ const Profile = ()=>{
                     <div className="w-full flex justify-center items-center h-[40%]">
                     <Avatar className="w-[200px] h-[200px] drop-shadow-xl">
                     <AvatarImage className="rounded-full shadow-lg" src={githubLoading?null:ProfileGithubData?.avatar_url} />
-                    <AvatarFallback><img className="rounded-full shadow-lg" src="/assets/user.webp" /></AvatarFallback>
+                    <AvatarFallback><img className="rounded-full shadow-lg" src="/assets/Cute Avatar.png" /></AvatarFallback>
                     </Avatar>
                     <div>
                     <h2 className="ml-4 text-3xl font-bold font-sans">{ProfileData?.name}</h2>
