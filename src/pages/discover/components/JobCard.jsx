@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Activity, Bookmark, BriefcaseBusiness, Check, Link2, MapPin, SquareArrowOutUpRight, Stars } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { format,formatDistance,formatDate,subDays } from "date-fns";
 
 const JobCard = ({title,company,location,jobType,description,url,date}) => {
     const [isVisible,setisVisible] = useState(false);
@@ -25,7 +26,7 @@ const JobCard = ({title,company,location,jobType,description,url,date}) => {
                         <h5 className="font-semibold text-[18px] my-2">{title}</h5>
                         <p>{company}</p>
                         <p>{location}</p>
-                        <span className="bg-[#e8f3fc] min-w-[120px] max-w-[200px] h-[25px] flex justify-start py-2 px-4 items-center text-center rounded text-[12px] font-semibold my-2"><Activity size={15} color="#237ea3" className="mr-2" />{date}</span>
+                        <span className="bg-[#e8f3fc] min-w-[120px] w-fit max-w-[200px] h-[25px] flex justify-start py-2 px-4 items-center text-center rounded text-[12px] font-semibold my-2"><Activity size={15} color="#237ea3" className="mr-2" />{formatDistance(subDays(date, 3), new Date(), { addSuffix: true })}</span>
                     </div>
                     <div className="w-[110px] h-[110px]">
                         <img className="object-contain" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1024px-Google_%22G%22_logo.svg.png" width={110} height={110} alt="co. img" />
@@ -47,7 +48,7 @@ const JobCard = ({title,company,location,jobType,description,url,date}) => {
                         <span className="flex justify-startmy-2 items-center"><BriefcaseBusiness size={15} className="mr-2" /><p>{company}</p></span>
                         <span className="flex justify-startmy-2 items-center"><MapPin size={15} className="mr-2" /><p>{location}</p></span>
                         
-                        <span className="bg-[#e8f3fc] min-w-[120px] max-w-[200px] h-[25px] flex justify-start py-2 px-4 items-center text-center rounded text-[12px] font-semibold my-2"><Activity size={15} color="#237ea3" className="mr-2" />{date}</span>
+                        <span className="bg-[#e8f3fc] min-w-[120px] w-fit max-w-[200px] h-[25px] flex justify-start py-2 px-4 items-center text-center rounded text-[12px] font-semibold my-2"><Activity size={15} color="#237ea3" className="mr-2" />{formatDistance(subDays(date, 3), new Date(), { addSuffix: true })}</span>
                     </div>
                     <div className="w-[110px] h-[110px]">
                         <img className="object-contain" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1024px-Google_%22G%22_logo.svg.png" width={110} height={110} alt="co. img" />
