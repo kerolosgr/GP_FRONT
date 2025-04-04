@@ -5,7 +5,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Book, Earth, Github, IdCard, Mail } from "lucide-react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { tips } from "./tips";
 const Profile = ()=>{
     const {ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData} = useContext(ProfileContext);
     // const GetGithubData = async ()=>{
@@ -17,6 +18,16 @@ const Profile = ()=>{
     //     queryFn: GetGithubData
     // });
     // if(!isLoading) console.log(data)
+
+    const giveTips = (tipsNumber)=>{
+        const tipsarray = [];
+        for(let i=0; i<tipsNumber; i++){
+            const tip = tips[Math.floor(Math.random()*tips.length)];
+            tipsarray.push(tip);
+        }
+        return tipsarray;
+    }
+    const tipsDisplayed = giveTips(8);
 
     return(
         <div className="w-full flex flex-col md:flex-row">
@@ -64,8 +75,19 @@ const Profile = ()=>{
                 <Button variant={"dark"} className="mt-1 ml-auto mr-4 px-5 rounded">Edit Profile</Button>
                 </div>
 
-                <div className="w-full md:w-fit md:mx-4 md:mt-0 mt-2 h-full bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
+                <div className="w-full md:w-[400px] md:mx-4 md:mt-0 mt-2 h-full bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
                     <img src={ProfileData.resume_image_url} className="w-full h-full object-contain"/>
+                </div>
+
+                <div className="w-full flex flex-col justify-start items-center md:w-[400px] md:mx-4 md:mt-0 mt-2 h-full bg-neutral-50 shadow-xl rounded-xl py-[25px] px-2 overflow-auto">
+                    <h2 className="text font-semibold">💡 Developer Tips & Tricks</h2>
+                    {tipsDisplayed.map(
+                        (tip)=>(
+                        <div key={tip.id} className="w-full min-h-[50px] flex justify-start items-center p-4 border-b-2">
+                        <p className="text-[12px] font-semibold text-gray-600">{tip.content}</p>
+                        </div>
+                        )
+                    )}
                 </div>
 
         </div>
