@@ -35,7 +35,7 @@ const Jobs = ()=>{
                 <h2 className="text-3xl font-semibold text-center">{indeedError.message}</h2>
                 :
                 indeedJobs?.data.data.map(
-                    (job,i)=><JobCard key={i} title={job.positionName} description={job.description} company={job.company} location={job.location} jobType={job.jobType[0]} url={url} date={job.postingDateParsed}/>
+                    (job,i)=><JobCard key={i} title={job.positionName} description={job.description} company={job.company} location={job.location} jobType={job.jobType[0]} url={job.url} date={job.postingDateParsed}/>
                 )
             }
             </div>
