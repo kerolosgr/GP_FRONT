@@ -28,6 +28,11 @@ const Courses = ()=>{
                 isLoading?
                 Array.from({length:8}).map((i,_)=> <CoursesCardSkeleton key={_}/>)
                 :
+                error?
+                <div className="w-full h-full flex flex-col justify-center items-center">
+                <h2 className="font-semibold text-center">Sorry , an error occured {error.message}</h2>
+                </div>
+                :
                 courses?.data.map(
                     (course)=> <CourseCard key={course.course_url} title={course.title} author={course.instructor} platform={"Coursat"} description={course.duration} rating={course.rating} image_url={course.image_url} url={course.course_url}/>
                 )

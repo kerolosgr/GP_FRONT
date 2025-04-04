@@ -32,7 +32,9 @@ const Jobs = ()=>{
                 )
                 :
                 indeedError?
-                <h2 className="text-3xl font-semibold text-center">{indeedError.message}</h2>
+                <div className="w-full h-full flex flex-col justify-center items-center">
+                <h2 className="font-semibold text-center">Sorry , an error occured {indeedError.message}</h2>
+                </div>
                 :
                 indeedJobs?.data.data.map(
                     (job,i)=><JobCard key={i} title={job.positionName} description={job.description} company={job.company} location={job.location} jobType={job.jobType[0]} url={job.url} date={job.postingDateParsed}/>
