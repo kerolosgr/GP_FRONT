@@ -9,7 +9,7 @@ const Bookmarks = ()=>{
                 <JobCardSkeleton/>
             {
                 Array.from({length:1}).map(
-                    ()=> <JobCard/>
+                    ()=> <JobCard date={new Date()}/>
                 )
             }
             </div>
