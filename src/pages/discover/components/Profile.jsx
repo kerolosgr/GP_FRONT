@@ -7,6 +7,7 @@ import axios from "axios";
 import { Book, Earth, Github, IdCard, Mail } from "lucide-react";
 import { useContext, useEffect } from "react";
 import { tips } from "./tips";
+import ResumeScore from "./ResumeScore";
 const Profile = ()=>{
     const {ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData} = useContext(ProfileContext);
     // const GetGithubData = async ()=>{
@@ -79,7 +80,7 @@ const Profile = ()=>{
                     <img src={ProfileData.resume_image_url} className="w-full h-full object-contain"/>
                 </div>
 
-                <div className="w-full flex flex-col justify-start items-center md:w-[400px] md:mx-4 md:mt-0 mt-2 h-full bg-neutral-50 shadow-xl rounded-xl py-[25px] px-2 overflow-auto">
+                {/* <div className="w-full flex flex-col justify-start items-center md:w-[400px] md:mx-4 md:mt-0 mt-2 h-full bg-neutral-50 shadow-xl rounded-xl py-[25px] px-2 overflow-auto">
                     <h2 className="text font-semibold">💡 Developer Tips & Tricks</h2>
                     {tipsDisplayed.map(
                         (tip)=>(
@@ -88,7 +89,8 @@ const Profile = ()=>{
                         </div>
                         )
                     )}
-                </div>
+                </div> */}
+                <ResumeScore/>
 
         </div>
     )
