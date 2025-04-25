@@ -12,6 +12,7 @@ import Courses from "./Courses";
 import { ProfileContext } from "@/components/context/ProfileContext";
 import CodeEditor from "./CodeEditor";
 import GithubRepos from "./GithubRepos";
+import Papers from "./Papers";
 
 
 
@@ -77,6 +78,7 @@ const SideBar = ()=>{
             <div className="w-[calc(100%-70px)] h-full bg-[url('/assets/download.svg')] overflow-x-auto">
             <div className={"h-full flex p-4 "+`transition-opacity duration-200 ease-in-out ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
             {View === "profile" && <Profile />}
+            {View === "papers" && <Papers />}
             {View === "jobs" && <Jobs />}
             {View === "bookmarks" && <Bookmarks />}
             {View === "courses" && <Courses />}
