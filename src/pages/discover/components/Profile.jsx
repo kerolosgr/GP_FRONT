@@ -57,7 +57,7 @@ const Profile = ()=>{
                         <div className="w-full flex m-2 flex-wrap">
                             {ProfileData.skills.length > 0 ?
                             ProfileData.skills.slice(0,8).map(
-                                (skill)=> <Badge variant="dark">{skill}</Badge>
+                                (skill)=> <Badge variant="dark" key={skill}>{skill}</Badge>
                             )
                             :
                             <Badge variant="dark">EMPTY</Badge>}
