@@ -20,10 +20,10 @@ const GithubRepos = ()=>{
     });
 
     return(
-        <div className="w-full h-full flex flex-wrap gap-2 justify-start items-start p-4 rounded-xl bg-neutral-50 overflow-x-auto">
+        <div className="w-full h-fit flex flex-wrap gap-2 justify-start items-start p-4 rounded-xl bg-neutral-50 overflow-x-auto">
             {
                 isLoading?
-                Array.from({length:8}).map(
+                Array.from({length:10}).map(
                     (i,_)=> <GithubrepocardSkeleton key={_}/>
                 )
                 :
