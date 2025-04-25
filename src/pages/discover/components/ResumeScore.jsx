@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-const ResumeScore = ()=>{
-    const percentage = 70;
+const ResumeScore = ({score})=>{
+    const [percentage,setpercentage]=useState(0);
+    setTimeout(()=>{setpercentage(score)},100);
 
 
     return(

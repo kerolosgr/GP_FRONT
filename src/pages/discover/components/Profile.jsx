@@ -90,7 +90,7 @@ const Profile = ()=>{
                         )
                     )}
                 </div> */}
-                <ResumeScore/>
+                <ResumeScore score={80}/>
 
         </div>
     )
