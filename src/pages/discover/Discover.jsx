@@ -41,9 +41,9 @@ const Discover = ()=>{
         
         try{
         const response = await axios.get(`https://lin.kerolos-safwat.me/api/v1/user/${userId}`,{headers:{'Authorization': `Bearer ${Cookies.get("devtoken")}`}});
-        localStorage.setItem('userSavedId',response.data.data.id);
+        // localStorage.setItem('userSavedId',response.data.data.id);
         setshowDiscover(true);
-        // console.log(response.data.data);
+        console.log(response.data.data);
         return response.data.data;
         }
 
@@ -54,14 +54,19 @@ const Discover = ()=>{
                 navigate('/start');
                 setshowDiscover(false);
             }
+            if(err.status==401){
+                toast("Please Login First");
+                navigate('/start');
+                setshowDiscover(false);
+            }
             return null;
         }  
     };
 
 
     const fetchedgithubdata = async ()=>{
-        if(ProfileData?.github_login){ 
-            const res =  await axios.get(`https://api.github.com/users/${ProfileData?.github_login}`);
+        if(ProfileData?.github){ 
+            const res =  await axios.get(`https://api.github.com/users/${ProfileData?.github}`);
             return res.data;
         }
         return null;
@@ -75,7 +80,7 @@ const Discover = ()=>{
     const {data: ProfileGithubData,isLoading:githubLoading,error:githubError} = useQuery({
         queryKey:["github",ProfileData?.github_login],
         queryFn: fetchedgithubdata,
-        enabled:!!ProfileData?.github_login
+        enabled:!!ProfileData?.github
     });
 
     // console.log(githubLoading);
