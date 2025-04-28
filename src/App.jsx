@@ -14,7 +14,7 @@ import { useState } from 'react'
 function App() {
   const client = new QueryClient();
   const [userId,setuserId] = useState("");
-  const [showDiscover,setshowDiscover] = useState(localStorage.getItem("userSavedId")?true:false);
+  const [showDiscover,setshowDiscover] = useState(localStorage.getItem("userId")?true:false);
   return (
     <>
     <UserIdContext.Provider value={{userId,setuserId,showDiscover,setshowDiscover}}>

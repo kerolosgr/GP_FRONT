@@ -15,7 +15,7 @@ import Introduction5 from "./Introduction5";
 import Introduction6 from "./Introduction6";
 import axios from "axios";
 import { UserIdContext } from "@/components/context/UserIdContext";
-const ResumeUpload = ()=>{
+const ResumeUpload = ({setVerifyStep,setuserIdparent})=>{
     const [IsEnterCodeOpened,setIsEnterCodeOpened] = useState(false);
     const [code,setcode]=useState("");
     const navigate = useNavigate();
@@ -44,19 +44,28 @@ const ResumeUpload = ()=>{
         )
     }
 
-    const handleUploadFile= (e)=>{
+    const handleUploadFile= async (e)=>{
         const file = e.target.files[0];
         if(file.type === "application/pdf"){
             setisUploading(true);
             const form = new FormData;
-            form.append('resume', file);
-            console.log(form);
-            axios.post('http://web.kerolos-safwat.me/nlp/',form).then((res)=>{
-                console.log(res);
-                // setisUploading(false);
-                setisFinished(true);
-                setuserId((res.data.email));
-            })
+            form.append('cv', file);
+            try{
+                await axios.post('https://lin.kerolos-safwat.me/api/v1/user/create-user',form).then((res)=>{
+                    console.log(res);
+                    // setisUploading(false);
+                    setisFinished(true);
+                    // setuserId((res.data.email));
+                    setuserIdparent(res.data.data.id);
+                    console.log(res.data.data.id);
+                    localStorage.setItem('userEmail', res.data.data.email);
+                    localStorage.setItem('userId', res.data.data.id);
+                    setVerifyStep(true);
+                })
+            }
+            catch(err){
+                console.log(err);
+            }
         }
         else{
             toast("Wrong File Format, Please try again using pdf file");

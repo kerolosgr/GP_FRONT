@@ -46,17 +46,17 @@ const Profile = ()=>{
 
                     <div className="w-full flex flex-col p-2 gap-y-3 mt-4">
                         <h5 className="font-bold text-xl">Personal Info</h5>
-                        <span className="flex"><IdCard className="mr-2" /><p className="font-bold">{ProfileData.id}</p></span>
-                        <span className="flex"><Github className="mr-2" /><p className="font-semibold">{ProfileData.github_login?(githubLoading?"Github User":`${ProfileGithubData?.name == null ? '...' : ProfileGithubData?.name} (${ProfileData.github_login})`):"Not Set Yet"}</p></span>
-                        <span className="flex"><Mail className="mr-2" /><p>{ProfileData.email}</p></span>
-                        <span className="flex"><Earth className="mr-2" /><p>{ProfileData.location}</p></span>
-                        <span className="flex"><Book className="mr-2" /><p>{ProfileData.education}</p></span>
+                        <span className="flex"><IdCard className="mr-2" /><p className="font-bold">{ProfileData?.id}</p></span>
+                        <span className="flex"><Github className="mr-2" /><p className="font-semibold">{ProfileData?.github_login?(githubLoading?"Github User":`${ProfileGithubData?.name == null ? '...' : ProfileGithubData?.name} (${ProfileData.github_login})`):"Not Set Yet"}</p></span>
+                        <span className="flex"><Mail className="mr-2" /><p>{ProfileData?.email}</p></span>
+                        <span className="flex"><Earth className="mr-2" /><p>{ProfileData?.location}</p></span>
+                        <span className="flex"><Book className="mr-2" /><p>{ProfileData?.education}</p></span>
                     </div>
 
                     <div className="w-full flex flex-col justify-center items-start mt-4">
                         <h3 className="text-xl ml-2 font-bold">Skills</h3>
                         <div className="w-full flex m-2 flex-wrap">
-                            {ProfileData.skills.length > 0 ?
+                            {ProfileData?.skills.length > 0 ?
                             ProfileData.skills.slice(0,8).map(
                                 (skill)=> <Badge variant="dark" key={skill}>{skill}</Badge>
                             )
@@ -77,7 +77,7 @@ const Profile = ()=>{
                 </div>
 
                 <div className="w-full md:w-[400px] md:mx-4 md:mt-0 mt-2 h-full bg-neutral-50 rounded-xl px-2 py-[25px] shadow-xl">
-                    <img src={ProfileData.resume_image_url} className="w-full h-full object-contain"/>
+                    <img src={ProfileData?.resume_image_url} className="w-full h-full object-contain"/>
                 </div>
 
                 {/* <div className="w-full flex flex-col justify-start items-center md:w-[400px] md:mx-4 md:mt-0 mt-2 h-full bg-neutral-50 shadow-xl rounded-xl py-[25px] px-2 overflow-auto">

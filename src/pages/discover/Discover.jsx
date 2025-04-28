@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { data, useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { UserIdContext } from "@/components/context/UserIdContext";
+import Cookies from "js-cookie";
 
 const Discover = ()=>{
     const navigate = useNavigate();
@@ -37,13 +38,17 @@ const Discover = ()=>{
     
     if(userId== undefined) navigate('/start');
     const fetchUserProfile = async ()=>{
+        
         try{
-        const response = await axios.get(`https://lin.kerolos-safwat.me/getuser/${userId}`);
-        localStorage.setItem('userSavedId',response.data.id);
+        const response = await axios.get(`https://lin.kerolos-safwat.me/api/v1/user/${userId}`,{headers:{'Authorization': `Bearer ${Cookies.get("devtoken")}`}});
+        localStorage.setItem('userSavedId',response.data.data.id);
         setshowDiscover(true);
-        return response.data;
+        // console.log(response.data.data);
+        return response.data.data;
         }
+
         catch(err){
+            console.log(err);
             if(err.status==400){
                 toast("We couldn't find your user. Please try again or create a new profile.");
                 navigate('/start');
