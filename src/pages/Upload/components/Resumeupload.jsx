@@ -15,7 +15,8 @@ import Introduction5 from "./Introduction5";
 import Introduction6 from "./Introduction6";
 import axios from "axios";
 import { UserIdContext } from "@/components/context/UserIdContext";
-const ResumeUpload = ({setVerifyStep,setIsLogging,setidToLogin})=>{
+import LoadingResume from "./LoadingResume";
+const ResumeUpload = ({setVerifyStep,setIsLogging,setidToLogin,verifyStep,viewOTP,setviewOTP})=>{
     const [IsEnterCodeOpened,setIsEnterCodeOpened] = useState(false);
     const [code,setcode]=useState("");
     const navigate = useNavigate();
@@ -30,8 +31,9 @@ const ResumeUpload = ({setVerifyStep,setIsLogging,setidToLogin})=>{
         
         setTimeout(
             ()=>{
-                if(isFinished){
-                    Introduction!=7?setIntroduction(7):navigate('/discover/'+userId);
+                if(verifyStep){
+                    // Introduction!=7?setIntroduction(7):navigate('/discover/'+userId);
+                    Introduction!=7?setIntroduction(7):setviewOTP(true);
                 }
                 else {
                     if(Introduction != 6){
@@ -124,18 +126,19 @@ const ResumeUpload = ({setVerifyStep,setIsLogging,setidToLogin})=>{
             </DialogDescription>
             </DialogHeader>
             <div className={"flex h-full items-center justify-center overflow-auto "+`transition-opacity duration-500 ease-in-out ${Transition ? 'opacity-0' : 'opacity-100'}`}>
-                {Introduction==1&&<Introduction1/>}
+                {<LoadingResume/>}
+                {/* {Introduction==1&&<Introduction1/>}
                 {Introduction==2&&<Introduction2/>}
                 {Introduction==3&&<Introduction3/>}
                 {Introduction==4&&<Introduction4/>}
                 {Introduction==5&&<Introduction5/>}
                 {Introduction==6&&<Introduction6/>}
-                {Introduction==7&&<Final/>}
+                {Introduction==7&&<Final/>} */}
             {/* <img className={`absolute left-0 top-0 transition ease-in-out duration-10000 ${uploadingTransition?"opacity-100":"opacity-0"}`} src="/assets/person-1.webp"/>
             <img className={`absolute left-0 top-0 transition ease-in-out duration-30000  ${uploadingTransition?"opacity-100":"opacity-0"}`} src="/assets/person-2.webp"/>
             <img className={`absolute left-0 top-0 transition ease-in-out duration-50000  ${uploadingTransition?"opacity-100":"opacity-0"}`} src="/assets/person-3.webp"/> */}
             </div>
-            <Button disabled={Introduction==6&&!isFinished} onClick={handleNextIntroduction} variant={"dark"} className={"w-[200px] self-end"}>{Introduction==7 ?"Go To Dashboard":"Next"}</Button>
+            {/* <Button disabled={Introduction==6&&!verifyStep} onClick={handleNextIntroduction} variant={"dark"} className={"w-[200px] self-end"}>{Introduction==7 ?"Go To Dashboard":"Next"}</Button> */}
         </DialogContent>
         </Dialog>
         </>
