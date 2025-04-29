@@ -65,7 +65,7 @@ const Profile = ()=>{
                     </Avatar>
                     <div>
                     <h2 className="ml-4 text-3xl font-bold font-sans">{ProfileData?.name}</h2>
-                    <span className="ml-4 text-sm font-medium font-sans">{ProfileData?.job_title}</span>
+                    <span className="ml-4 text-sm font-medium font-sans">{ProfileData?.careerName}</span>
                     </div>
                     </div>
 

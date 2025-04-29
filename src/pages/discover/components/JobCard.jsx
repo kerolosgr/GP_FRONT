@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { format,formatDistance,formatDate,subDays } from "date-fns";
 
-const JobCard = ({title,company,location,jobType,description,url,date}) => {
+const JobCard = ({title,company,location,jobType,description,url,date,imageurl,experience}) => {
     const [isVisible,setisVisible] = useState(false);
     const [isCopied,setisCopied] = useState(false);
 
@@ -26,16 +26,16 @@ const JobCard = ({title,company,location,jobType,description,url,date}) => {
                         <h5 className="font-semibold text-[18px] my-2">{title}</h5>
                         <p>{company}</p>
                         <p>{location}</p>
-                        <span className="bg-[#e8f3fc] min-w-[120px] w-fit max-w-[200px] h-[25px] flex justify-start py-2 px-4 items-center text-center rounded text-[12px] font-semibold my-2"><Activity size={15} color="#237ea3" className="mr-2" />{formatDistance(subDays(date, 3), new Date(), { addSuffix: true })}</span>
+                        <span className="bg-[#e8f3fc] min-w-[120px] w-fit max-w-[200px] h-[25px] flex justify-start py-2 px-4 items-center text-center rounded text-[12px] font-semibold my-2"><Activity size={15} color="#237ea3" className="mr-2" />{date==="N/A"?"Posted date not available":date}</span>
                     </div>
                     <div className="w-[110px] h-[110px]">
-                        <img className="object-contain" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1024px-Google_%22G%22_logo.svg.png" width={110} height={110} alt="co. img" />
+                        {imageurl=="N/A"?null:<img className="object-contain" src={imageurl} width={110} height={110} alt="co. img" />}
                     </div>
                 </div>
                 <div className="flex justify-start items-center gap-2 text-[14px]">
-                    <p className="font-semibold">Entry-level</p>
+                    <p className="font-semibold">{experience}</p>
                     <p>{jobType}</p>
-                    <p>Remote</p>
+                    {/* <p>Remote</p> */}
                 </div>
                 <p className="mt-2 text-[12px] font-semibold text-gray-700 line-clamp-4 md:line-clamp-5">{description}</p>
             </div>
@@ -47,21 +47,21 @@ const JobCard = ({title,company,location,jobType,description,url,date}) => {
                         <h5 className="font-semibold text-[18px] my-2">{title}</h5>
                         <span className="flex justify-startmy-2 items-center"><BriefcaseBusiness size={15} className="mr-2" /><p>{company}</p></span>
                         <span className="flex justify-startmy-2 items-center"><MapPin size={15} className="mr-2" /><p>{location}</p></span>
-                        
-                        <span className="bg-[#e8f3fc] min-w-[120px] w-fit max-w-[200px] h-[25px] flex justify-start py-2 px-4 items-center text-center rounded text-[12px] font-semibold my-2"><Activity size={15} color="#237ea3" className="mr-2" />{formatDistance(subDays(date, 3), new Date(), { addSuffix: true })}</span>
+                        {/* {formatDistance(subDays(date, 3), new Date(), { addSuffix: true })} */}
+                        <span className="bg-[#e8f3fc] min-w-[120px] w-fit max-w-[200px] h-[25px] flex justify-start py-2 px-4 items-center text-center rounded text-[12px] font-semibold my-2"><Activity size={15} color="#237ea3" className="mr-2" />{date==="N/A"?"Posted date not available":date}</span>
                     </div>
                     <div className="w-[110px] h-[110px]">
-                        <img className="object-contain" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1024px-Google_%22G%22_logo.svg.png" width={110} height={110} alt="co. img" />
+                        {imageurl=="N/A"?null:<img className="object-contain" src={imageurl} width={110} height={110} alt="co. img" />}
                     </div>
                 </div>
                 <div className="flex justify-start items-center gap-2 text-[14px]">
-                    <p className="font-semibold">Entry-level</p>
+                    <p className="font-semibold">{experience}</p>
                     <p className="font-semibold">{jobType}</p>
-                    <p className="font-semibold">Remote</p>
+                    {/* <p className="font-semibold">Remote</p> */}
                 </div>
                 <p className="mt-2 text-[14px] font-semibold text-gray-700 max-h-[200px] line-clamp-6">{description}</p>
                 <div className="mt-10 ml-auto flex justify-center items-center">
-                <Link to={url} className="bg-black font-semibold text-white rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-900 flex justify-center items-center"><SquareArrowOutUpRight className="mr-2" size={15} />Apply</Link>
+                <a href={url} target="_blank" className="bg-black font-semibold text-white rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-900 flex justify-center items-center"><SquareArrowOutUpRight className="mr-2" size={15} />Apply</a>
                 <Button className="mx-2 rounded" variant={"dark"}><Bookmark /></Button>
                 <Button onClick={handleCopyToClipboard} className="bg-white font-semibold text-black border rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-50 flex justify-center items-center transition cursor-pointer">{isCopied?<Check />:<Link2 />}</Button>
                 </div>

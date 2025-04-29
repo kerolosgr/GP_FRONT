@@ -10,7 +10,7 @@ const GithubRepos = ()=>{
     const {ProfileData} = useContext(ProfileContext);
 
     const GetRepos = async()=>{
-    const repos = await axios.get(`https://api.github.com/users/${ProfileData.github_login}/repos?sort=updated&direction=desc`);
+    const repos = await axios.get(`https://api.github.com/users/${ProfileData.github}/repos?sort=updated&direction=desc`);
     return repos.data;
     }
 
