@@ -75,7 +75,7 @@ const Profile = ()=>{
                         <span className="flex items-center"><Github className="mr-2" /><p className="font-semibold">{ProfileData?.github?(githubLoading?"Github User":`${ProfileGithubData?.name == null ? '...' : ProfileGithubData?.name} (${ProfileData.github})`):"Not Set Yet"}</p></span>
                         <span className="flex items-center"><Mail className="mr-2" /><p>{ProfileData?.email}</p></span>
                         <span className="flex items-center"><Earth className="mr-2" /><p>{ProfileData?.location}</p></span>
-                        <span className="flex items-center"><Book className="mr-2" /><p className="text-[15px]">{ProfileData?.collegeName[0]}</p></span>
+                        <span className="flex items-center"><Book className="mr-2" /><p className="text-[15px] max-w-[90%] font-semibold">{ProfileData?.collegeName[0]}</p></span>
                     </div>
 
                     <div className="w-full flex flex-col justify-center items-start mt-4">
