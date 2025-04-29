@@ -10,9 +10,9 @@ const Courses = ()=>{
     const skillsConcat = ProfileData?.skills.join(' ');
 
     const fetchCourses = async ()=>{
-        const res = await axios.get(`https://api.kerolos-safwat.me/api/v1/coursat?query=${skillsConcat}`);
-        console.log(res.data);
-        return res.data;
+        const res = await axios.get(`https://scrappingall-production.up.railway.app/scrape-courses?query=${skillsConcat}&pages=10`);
+        // console.log(res.data);
+        return res.data.result;
     };
     const {data:courses,isLoading,error}=useQuery({
         queryKey:["courses"],
@@ -33,8 +33,8 @@ const Courses = ()=>{
                 <h2 className="font-semibold text-center">Sorry , an error occured {error.message}</h2>
                 </div>
                 :
-                courses?.data.map(
-                    (course)=> <CourseCard key={course.course_url} title={course.title} author={course.instructor} platform={"Coursat"} description={course.duration} rating={course.rating} image_url={course.image_url} url={course.course_url}/>
+                courses?.map(
+                    (course)=> <CourseCard key={course.image} duration={course.details.duration} title={course.title} author={course.instructor} platform={course.details.provider} description={course.description} rating={5} image_url={course.image} url={course.course_url}/>
                 )
             }
             </div>

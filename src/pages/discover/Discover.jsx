@@ -43,7 +43,7 @@ const Discover = ()=>{
         const response = await axios.get(`https://lin.kerolos-safwat.me/api/v1/user/${userId}`,{headers:{'Authorization': `Bearer ${Cookies.get("devtoken")}`}});
         // localStorage.setItem('userSavedId',response.data.data.id);
         setshowDiscover(true);
-        console.log(response.data.data);
+        // console.log(response.data.data);
         return response.data.data;
         }
 
