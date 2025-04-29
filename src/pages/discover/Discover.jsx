@@ -48,13 +48,14 @@ const Discover = ()=>{
         }
 
         catch(err){
-            console.log(err);
+            // console.log(err);
             if(err.status==400){
                 toast("We couldn't find your user. Please try again or create a new profile.");
                 navigate('/start');
                 setshowDiscover(false);
             }
             if(err.status==401){
+                localStorage.setItem('idToLogin',userId);
                 toast("Please Login First");
                 navigate('/start');
                 setshowDiscover(false);

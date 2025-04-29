@@ -9,16 +9,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-const VerifyOTP = ({OTPQR_URL,isLogging})=>{
+const VerifyOTP = ({OTPQR_URL,isLogging,setidToLogin,idToLogin,setVerifyStep})=>{
     const [code, setCode] = useState("");
     const [wrongOTP,setwrongOTP] = useState(false);
     const navigate = useNavigate();
     const verifyOtp = async()=>{
-      console.log(localStorage.getItem('userId'));
+      // console.log(localStorage.getItem('userId'));
+      
         try{
             await axios.post('https://lin.kerolos-safwat.me/api/v1/user/validate',{
             code:code,
-            id: localStorage.getItem('userId')
+            id: idToLogin
         }).then(
             res=>{
                 setwrongOTP(false);
@@ -97,14 +98,31 @@ const VerifyOTP = ({OTPQR_URL,isLogging})=>{
               }
                 
                 
-                <div className="w-[60%] flex flex-col justify-start items-start text-left">
-                <p className="text-[15px]">For your security, our website uses two-factor authentication (2FA). Follow these quick steps to log in:</p>
-                <p className="font-semibold">1. Scan the QR Code</p>
-                <p className="text-[15px] text-neutral-700">Open the Google Authenticator app (install it if needed), and scan the QR code shown on the left.</p>
-                <p className="font-semibold">2. Get Your Code</p>
-                <p className="text-[15px] text-neutral-700">After scanning, the app will show a 6-digit code that refreshes every 30 seconds.</p>
-                <p className="font-semibold">3. Enter the Code to Log In</p>
-                <p className="text-[15px] text-neutral-700">Enter the code here to complete your login. Use Google Authenticator each time you log in.</p>
+                <div className={"w-[60%] flex flex-col justify-start text-left "+cn(isLogging==true || OTPQR_URL==""?"items-center text-left w-full":"items-start")}>
+                  {
+                    (isLogging==true || OTPQR_URL=="" )?
+                    <>
+                    <p className="text-[15px]">Welcome back! For your security, two-factor authentication (2FA) is required to log in.</p>
+                    <p className="font-semibold">1. Open Google Authenticator</p>
+                    <p className="text-[15px] text-neutral-700">Launch the Google Authenticator app on your device.</p>
+                    <p className="font-semibold">2. Get Your 6-Digit Code</p>
+                    <p className="text-[15px] text-neutral-700">Find the 6-digit code for your account — it refreshes every 30 seconds.</p>
+                    <p className="font-semibold">3. Enter the Code Below</p>
+                    <p className="text-[15px] text-neutral-700">Type the current code here to complete your login.</p>
+
+                    </>
+                    :
+                    <>
+                    <p className="text-[15px]">For your security, our website uses two-factor authentication (2FA). Follow these quick steps to log in:</p>
+                    <p className="font-semibold">1. Scan the QR Code</p>
+                    <p className="text-[15px] text-neutral-700">Open the Google Authenticator app (install it if needed), and scan the QR code shown on the left.</p>
+                    <p className="font-semibold">2. Get Your Code</p>
+                    <p className="text-[15px] text-neutral-700">After scanning, the app will show a 6-digit code that refreshes every 30 seconds.</p>
+                    <p className="font-semibold">3. Enter the Code to Log In</p>
+                    <p className="text-[15px] text-neutral-700">Enter the code here to complete your login. Use Google Authenticator each time you log in.</p>
+                    </>
+                  }
+                
                 <div className="flex justify-center items-center mt-4">
                 <InputOTP maxLength={6} value={code} autoFocus
                 onChange={(value) => setCode(value)}>
@@ -118,10 +136,11 @@ const VerifyOTP = ({OTPQR_URL,isLogging})=>{
                 </InputOTPGroup>
                 </InputOTP>
                 <Button onClick={()=>verifyOtp()} className="ml-[20px]" size={"lg"}>Verify</Button>
+                <Button onClick={()=>{localStorage.removeItem('idToLogin');setidToLogin(null);setVerifyStep(false);}} className={"ml-[20px]"} size={"lg"} variant={"outline"}>Cancel</Button>
                 </div>
                 {wrongOTP?<p className="text-red-500 text-[15px] mt-2 font-semibold">The code you entered is incorrect</p>:null}
                 </div>
-
+                  
             </div>
 
         </div>

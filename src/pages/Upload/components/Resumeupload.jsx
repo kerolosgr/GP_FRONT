@@ -15,7 +15,7 @@ import Introduction5 from "./Introduction5";
 import Introduction6 from "./Introduction6";
 import axios from "axios";
 import { UserIdContext } from "@/components/context/UserIdContext";
-const ResumeUpload = ({setVerifyStep,setuserIdparent,setIsLogging})=>{
+const ResumeUpload = ({setVerifyStep,setIsLogging,setidToLogin})=>{
     const [IsEnterCodeOpened,setIsEnterCodeOpened] = useState(false);
     const [code,setcode]=useState("");
     const navigate = useNavigate();
@@ -56,10 +56,12 @@ const ResumeUpload = ({setVerifyStep,setuserIdparent,setIsLogging})=>{
                     // setisUploading(false);
                     setisFinished(true);
                     // setuserId((res.data.email));
-                    setuserIdparent(res.data.data.id);
+                    // setuserIdparent(res.data.data.id);
                     console.log(res.data.data.id);
                     localStorage.setItem('userEmail', res.data.data.email);
-                    localStorage.setItem('userId', res.data.data.id);
+                    localStorage.setItem('idToLogin', res.data.data.id);
+                    setidToLogin(res.data.data.id);
+                    // localStorage.setItem('userId', res.data.data.id);
                     setVerifyStep(true);
                 })
             }
@@ -108,7 +110,7 @@ const ResumeUpload = ({setVerifyStep,setuserIdparent,setIsLogging})=>{
             <InputOTPSlot index={5} />
         </InputOTPGroup>
         </InputOTP>
-            <Button onClick={()=>{setIsLogging(true);setuserIdparent(code);setVerifyStep(true);}} className={"mx-4"} variant={"dark"}>Submit</Button>
+            <Button onClick={()=>{setIsLogging(true);setVerifyStep(true);setidToLogin(code);localStorage.setItem('idToLogin', code);}} className={"mx-4"} variant={"dark"}>Submit</Button>
             </div>
         </DialogContent>
         </Dialog>
