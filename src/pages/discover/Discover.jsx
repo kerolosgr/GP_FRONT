@@ -59,6 +59,11 @@ const Discover = ()=>{
                 navigate('/start');
                 setshowDiscover(false);
             }
+            if(err.status==404){
+                toast("You Don't have permission to access this page.");
+                navigate('/start');
+                setshowDiscover(false);
+            }
             return null;
         }  
     };
