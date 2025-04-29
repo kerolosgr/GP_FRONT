@@ -10,7 +10,7 @@ const Jobs = ()=>{
     const {ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData} = useContext(ProfileContext);
     const fetchindeedJobs = async ()=>{
         const res = await axios.get(`https://scrappingall-production.up.railway.app/scrape-jobs?query=${ProfileData?.careerName}&pages=2&country_symbol=EG&location=${ProfileData?.location}`);
-        console.log(res.data.result);
+        // console.log(res.data.result);
         return res.data.result;
     }
 

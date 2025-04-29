@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { format,formatDistance,formatDate,subDays } from "date-fns";
 
-const JobCard = ({title,company,location,jobType,description,url,date,imageurl,experience}) => {
+const JobCard = ({title,company,location,jobType,description,url,date,imageurl,experience,saved}) => {
     const [isVisible,setisVisible] = useState(false);
     const [isCopied,setisCopied] = useState(false);
 
@@ -62,7 +62,7 @@ const JobCard = ({title,company,location,jobType,description,url,date,imageurl,e
                 <p className="mt-2 text-[14px] font-semibold text-gray-700 max-h-[200px] line-clamp-6">{description}</p>
                 <div className="mt-10 ml-auto flex justify-center items-center">
                 <a href={url} target="_blank" className="bg-black font-semibold text-white rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-900 flex justify-center items-center"><SquareArrowOutUpRight className="mr-2" size={15} />Apply</a>
-                <Button className="mx-2 rounded" variant={"dark"}><Bookmark /></Button>
+                <Button className="mx-2 rounded" variant={"dark"}><Bookmark fill={saved?"#FFFFFF":"none"} /></Button>
                 <Button onClick={handleCopyToClipboard} className="bg-white font-semibold text-black border rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-50 flex justify-center items-center transition cursor-pointer">{isCopied?<Check />:<Link2 />}</Button>
                 </div>
                 
