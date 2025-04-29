@@ -7,8 +7,9 @@ import Cookies from "js-cookie";
 import { Loader } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
-const VerifyOTP = ({OTPQR_URL})=>{
+const VerifyOTP = ({OTPQR_URL,isLogging})=>{
     const [code, setCode] = useState("");
     const [wrongOTP,setwrongOTP] = useState(false);
     const navigate = useNavigate();
@@ -30,8 +31,12 @@ const VerifyOTP = ({OTPQR_URL})=>{
             }
         )
         }catch(err){
-            if(err.response?.status==401 || err.response?.status==400){
+            if(err.response?.status==401){
                 setwrongOTP(true);
+            }
+            if(err.response?.status==400){
+                setwrongOTP(true);
+                toast("User Not Found");
             }
         }
     }
@@ -77,7 +82,11 @@ const VerifyOTP = ({OTPQR_URL})=>{
 </svg>
             <h2 className="text-xl font-bold">Secure Your Account with Google Authenticator</h2>
             </div>
-            <div className="w-full flex justify-between items-center my-4">
+            <div className={"w-full flex items-center my-4 "+cn(isLogging==true || OTPQR_URL==""?"justify-center":"justify-between")}>
+              {
+                (isLogging==true || OTPQR_URL=="")?
+                null
+                :
                 <div className="w-[30%] flex justify-center items-center">
                 <Avatar>
                 <AvatarImage className="w-[300px] h-[300px]" src={OTPQR_URL} />
@@ -85,6 +94,8 @@ const VerifyOTP = ({OTPQR_URL})=>{
                 </Avatar>
                 {/* <img className="w-[300px] h-[300px]" src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth%3A%2F%2Ftotp%2FDevPal%3Aabdelrahmanmousa244%40gmail.com%3Fsecret%3D54L7BKJBKBVOV6EA%26issuer%3DDevPal%26algorithm%3DSHA1%26digits%3D6%26period%3D30&size=200x200&ecc=M&margin=0" alt="google logo" /> */}
                 </div>
+              }
+                
                 
                 <div className="w-[60%] flex flex-col justify-start items-start text-left">
                 <p className="text-[15px]">For your security, our website uses two-factor authentication (2FA). Follow these quick steps to log in:</p>

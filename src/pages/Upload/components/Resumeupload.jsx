@@ -15,7 +15,7 @@ import Introduction5 from "./Introduction5";
 import Introduction6 from "./Introduction6";
 import axios from "axios";
 import { UserIdContext } from "@/components/context/UserIdContext";
-const ResumeUpload = ({setVerifyStep,setuserIdparent})=>{
+const ResumeUpload = ({setVerifyStep,setuserIdparent,setIsLogging})=>{
     const [IsEnterCodeOpened,setIsEnterCodeOpened] = useState(false);
     const [code,setcode]=useState("");
     const navigate = useNavigate();
@@ -108,7 +108,7 @@ const ResumeUpload = ({setVerifyStep,setuserIdparent})=>{
             <InputOTPSlot index={5} />
         </InputOTPGroup>
         </InputOTP>
-            <Button onClick={()=>{code.length==6?navigate("/discover/"+code):null}} className={"mx-4"} variant={"dark"}>Submit</Button>
+            <Button onClick={()=>{setIsLogging(true);setuserIdparent(code);setVerifyStep(true);}} className={"mx-4"} variant={"dark"}>Submit</Button>
             </div>
         </DialogContent>
         </Dialog>
