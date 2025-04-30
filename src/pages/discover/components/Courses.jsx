@@ -10,7 +10,7 @@ const Courses = ()=>{
     const skillsConcat = ProfileData?.skills.join(' ');
 
     const fetchCourses = async ()=>{
-        const res = await axios.post(`https://scrappingall-production.up.railway.app/scrape-courses?query=${skillsConcat}&pages=10`,{query:skillsConcat});
+        const res = await axios.post(`https://scrappingall-production.up.railway.app/scrape-courses`,{query:"java"});
         // console.log(res.data);
         return res.data.result;
     };
@@ -34,7 +34,7 @@ const Courses = ()=>{
                 </div>
                 :
                 courses?.map(
-                    (course)=> <CourseCard key={course.image} duration={course.details.duration} title={course.title} author={course.instructor} platform={course.details.provider} description={course.description} rating={5} image_url={course.image} url={course.course_url}/>
+                    (course)=> <CourseCard key={course.image} duration={course.details.duration} title={course.title} author={course.instructor} platform={course.details.provider} description={course.description} rating={5} image_url={course.image} url={course.link}/>
                 )
             }
             </div>

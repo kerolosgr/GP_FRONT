@@ -33,7 +33,7 @@ const CourseCard = ({title,author,platform,description,rating,image_url,url,dura
                 </div>
                 
                 </div>
-                <Link to={url} className="w-fit ml-auto"><Button className={"w-fit ml-auto"}>View Course</Button></Link>
+                <a href={url} target="_blank" className="w-fit ml-auto"><Button className={"w-fit ml-auto"}>View Course</Button></a>
             </DialogContent>
         </Dialog >
         </>
