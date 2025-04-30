@@ -7,6 +7,7 @@ import { data, useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { UserIdContext } from "@/components/context/UserIdContext";
 import Cookies from "js-cookie";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Discover = ()=>{
     const navigate = useNavigate();
@@ -113,7 +114,10 @@ const Discover = ()=>{
         <ProfileContext.Provider value={{ProfileData,profileLoading,profileError,ProfileGithubData,githubLoading,githubError}}>
             {
                 profileLoading?
-                <div className="w-full h-[calc(100vh-100px)] flex justify-center items-center text-2xl font-bold font-sans text-amber-700 shadow-[0_0_10px] bg-amber-200">Loading...</div>
+                <div className="w-full h-[calc(100vh-100px)] flex justify-start items-center text-2xl font-bold font-sans">
+                    <Skeleton className={"w-[75px] rounded-[0px] h-full"}/>
+                    <Skeleton className={"w-[calc(100%-100px)] mx-auto h-[calc(95vh-100px)] rounded-xl"}/>
+                </div>
                 :
                 <SideBar/>
             }
