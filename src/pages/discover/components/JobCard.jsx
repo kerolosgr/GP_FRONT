@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { format,formatDistance,formatDate,subDays } from "date-fns";
 
-const JobCard = ({title,company,location,jobType,description,url,date,imageurl,experience,saved}) => {
+const JobCard = ({title,company,location,jobType,description,url,date,imageurl,experience,saved,descriptionarray}) => {
     const [isVisible,setisVisible] = useState(false);
     const [isCopied,setisCopied] = useState(false);
 
@@ -37,7 +37,7 @@ const JobCard = ({title,company,location,jobType,description,url,date,imageurl,e
                     <p>{jobType}</p>
                     {/* <p>Remote</p> */}
                 </div>
-                <p className="mt-2 text-[12px] font-semibold text-gray-700 line-clamp-4 md:line-clamp-5">{description}</p>
+                <p className="mt-2 text-[12px] font-semibold text-gray-700 line-clamp-4 md:line-clamp-5">{descriptionarray.join(" . ")}</p>
             </div>
             <Dialog open={isVisible} onOpenChange={setisVisible}>
             <DialogContent className="min-w-[1020px] min-h-[50vh] max-h-[80vh]">
@@ -59,7 +59,7 @@ const JobCard = ({title,company,location,jobType,description,url,date,imageurl,e
                     <p className="font-semibold">{jobType}</p>
                     {/* <p className="font-semibold">Remote</p> */}
                 </div>
-                <p className="mt-2 text-[14px] font-semibold text-gray-700 max-h-[200px] line-clamp-6">{description}</p>
+                <p className="mt-2 text-[14px] font-semibold text-gray-700 max-h-[200px] line-clamp-6">{descriptionarray.join(" . ")}</p>
                 <div className="mt-10 ml-auto flex justify-center items-center">
                 <a href={url} target="_blank" className="bg-black font-semibold text-white rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-900 flex justify-center items-center"><SquareArrowOutUpRight className="mr-2" size={15} />Apply</a>
                 <Button className="mx-2 rounded" variant={"dark"}><Bookmark fill={saved?"#FFFFFF":"none"} /></Button>
