@@ -29,7 +29,7 @@ const JobCard = ({title,company,location,jobType,description,url,date,imageurl,e
                         <span className="bg-[#e8f3fc] min-w-[120px] w-fit max-w-[200px] h-[25px] flex justify-start py-2 px-4 items-center text-center rounded text-[12px] font-semibold my-2"><Activity size={15} color="#237ea3" className="mr-2" />{date==="N/A"?"Posted date not available":date}</span>
                     </div>
                     <div className="w-[110px] h-[110px]">
-                        {imageurl=="N/A"?null:<img className="object-contain" src={imageurl} width={110} height={110} alt="co. img" />}
+                        {imageurl=="N/A"?null:<img className="object-contain" src={imageurl+"?height=4160&width=4160"} width={110} height={110} alt="co. img" />}
                     </div>
                 </div>
                 <div className="flex justify-start items-center gap-2 text-[14px]">
@@ -51,7 +51,7 @@ const JobCard = ({title,company,location,jobType,description,url,date,imageurl,e
                         <span className="bg-[#e8f3fc] min-w-[120px] w-fit max-w-[200px] h-[25px] flex justify-start py-2 px-4 items-center text-center rounded text-[12px] font-semibold my-2"><Activity size={15} color="#237ea3" className="mr-2" />{date==="N/A"?"Posted date not available":date}</span>
                     </div>
                     <div className="w-[110px] h-[110px]">
-                        {imageurl=="N/A"?null:<img className="object-contain" src={imageurl} width={110} height={110} alt="co. img" />}
+                        {imageurl=="N/A"?null:<img className="object-contain" src={imageurl+"?height=4160&width=4160"} width={110} height={110} alt="co. img" />}
                     </div>
                 </div>
                 <div className="flex justify-start items-center gap-2 text-[14px]">
