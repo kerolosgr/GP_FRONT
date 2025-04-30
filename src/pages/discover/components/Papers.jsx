@@ -27,7 +27,7 @@ const Papers = ()=>{
                 )
                 :
                 data.data.map(
-                    (paper)=> <PaperCard key={paper.url} title={paper.title} author={paper.author} date={paper.date}/>
+                    (paper)=> <PaperCard key={paper.url} url={paper.url} title={paper.title} author={paper.author} date={paper.date}/>
                 )}
             </div>
         </div>
