@@ -66,7 +66,7 @@ const Profile = ()=>{
                      <AvatarImage className="w-full h-full object-cover" src={githubLoading?null:ProfileGithubData?.avatar_url} />
                      <AvatarFallback><img src="/assets/Cute Avatar2.png" /></AvatarFallback>
                      </Avatar>
-                     <div className="absolute flex items-center justify-between px-8 py-4 w-full bottom-0 bg-gradient-to-t from-black/60 to-transparent">
+                    <div className="absolute flex items-center justify-between px-8 py-4 w-full bottom-0 bg-gradient-to-t from-black/60 to-transparent">
                     
                     <div className="flex flex-col">
                     <h2 className="text-xl font-[480] text-white">{ProfileData?.name}</h2>
@@ -116,8 +116,8 @@ const Profile = ()=>{
                     </div> */}
                 </div>
 
-                <div className="col-span-2 rounded-[50px] gap-4 bg-white h-[800px] overflow-hidden">
-                <img src={resumeImage} className="w-full h-full object-contain"/>
+                <div className="col-span-2 rounded-[50px] p-4 bg-white h-[800px] overflow-hidden">
+                <img src={resumeImage} className="w-full h-fit object-contain"/>
                 </div>
 
             </div>
