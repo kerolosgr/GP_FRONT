@@ -38,7 +38,7 @@ const SideBar = ()=>{
                 <Button onClick={()=>handleViewChange("profile")} variant={"light"} className={"w-full h-[50px] "+ cn(View === "profile" && "bg-gray-800 text-white hover:bg-gray-600")}>
                 <Avatar>
                 <AvatarImage className="rounded-full" src={githubLoading?null:ProfileGithubData?.avatar_url} />
-                <AvatarFallback><img className="rounded-full shadow-lg" src="/assets/Cute Avatar.png" /></AvatarFallback>
+                <AvatarFallback><img className="rounded-full shadow-lg" src="/assets/Cute Avatar2.png" /></AvatarFallback>
                 </Avatar>
                 </Button>
                 </Tooltipcustom>
@@ -75,7 +75,7 @@ const SideBar = ()=>{
                 </Tooltipcustom></span>
 
             </div>
-            <div className="w-[calc(100%-70px)] h-full bg-[url('/assets/download.svg')] overflow-x-auto">
+            <div className="w-[calc(100%-70px)] h-full bg-[radial-gradient(ellipse_at_top_left,_#e3e5e6,_#efe8c1,_#f3e7cb)] overflow-x-auto">
             <div className={"h-full flex p-4 "+`transition-opacity duration-200 ease-in-out ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
             {View === "profile" && <Profile />}
             {View === "papers" && <Papers />}

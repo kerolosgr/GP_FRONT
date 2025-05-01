@@ -114,7 +114,7 @@ const Discover = ()=>{
         <ProfileContext.Provider value={{ProfileData,profileLoading,profileError,ProfileGithubData,githubLoading,githubError}}>
             {
                 profileLoading?
-                <div className="w-full h-[calc(100vh-100px)] flex justify-start items-center text-2xl font-bold font-sans">
+                <div className="w-full h-[calc(100vh-100px)] flex justify-start items-center bg-[radial-gradient(ellipse_at_top_left,_#e3e5e6,_#efe8c1,_#f3e7cb)]">
                     <Skeleton className={"w-[75px] rounded-[0px] h-full"}/>
                     <Skeleton className={"w-[calc(100%-100px)] mx-auto h-[calc(95vh-100px)] rounded-xl"}/>
                 </div>

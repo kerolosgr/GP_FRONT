@@ -8,7 +8,7 @@ const Navbar = ()=>{
     // console.log(localStorage.getItem("userId"))
  return(
     <nav className="w-full h-[100px] flex justify-between items-center px-2 md:px-10 box-border shadow ">
-        <h2 className="text-xl font-semibold"><span className="font-bold bg-black px-1 rounded text-white">Dev</span> <span className="font-bold">P</span>al</h2>
+        <Link to={"/"}><h2 className="text-xl font-semibold"><span className="font-bold bg-black px-1 rounded text-white">Dev</span> <span className="font-bold">P</span>al</h2></Link>
         <div className="flex items-center p-2 rounded-lg md:gap-[10px] text-black font-semibold">
             
             {
