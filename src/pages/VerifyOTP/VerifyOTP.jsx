@@ -127,12 +127,12 @@ const VerifyOTP = ({OTPQR_URL,isLogging,setidToLogin,idToLogin,setVerifyStep})=>
                 <InputOTP maxLength={6} value={code} autoFocus
                 onChange={(value) => setCode(value)}>
                 <InputOTPGroup className={"border-red shadow-red-600"}>
-                    <InputOTPSlot className={"text-[32px] p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={0} />
-                    <InputOTPSlot className={"text-[32px] p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={1} />
-                    <InputOTPSlot className={"text-[32px] p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={2} />
-                    <InputOTPSlot className={"text-[32px] p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={3} />
-                    <InputOTPSlot className={"text-[32px] p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={4} />
-                    <InputOTPSlot className={"text-[32px] p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={5} />
+                    <InputOTPSlot className={"md:text-[32px] md:p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={0} />
+                    <InputOTPSlot className={"md:text-[32px] md:p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={1} />
+                    <InputOTPSlot className={"md:text-[32px] md:p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={2} />
+                    <InputOTPSlot className={"md:text-[32px] md:p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={3} />
+                    <InputOTPSlot className={"md:text-[32px] md:p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={4} />
+                    <InputOTPSlot className={"md:text-[32px] md:p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={5} />
                 </InputOTPGroup>
                 </InputOTP>
                 <Button onClick={()=>verifyOtp()} className="ml-[20px]" size={"lg"}>Verify</Button>
