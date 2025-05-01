@@ -3,15 +3,18 @@ import JobCard from "./JobCard";
 import JobCardSkeleton from "./JobCardSkeleton";
 import Cookies from "js-cookie";
 import { useQuery } from "@tanstack/react-query";
+import { useContext, useEffect } from "react";
+import { ProfileContext } from "@/components/context/ProfileContext";
 
 const Bookmarks = ({userid})=>{
-    const getBookmarks = async ()=>{
-        const res = await axios.get(`https://lin.kerolos-safwat.me/api/v1/user/jobs/${localStorage.getItem("userId")}`,{headers:{'Authorization': `Bearer ${Cookies.get("devtoken")}`}});
-        return res.data.data;
-    }
-    const {data:bookmarks,error,isLoading,refetch} = useQuery(
-        {queryKey:["bookmarks"], queryFn: getBookmarks}
+    const {bookmarks,refetch,bookmarksisLoading:isLoading} = useContext(ProfileContext);
+
+    useEffect(
+        ()=>{
+            refetch();
+        }
     )
+    
     return(
         <div className="w-full h-full p-4 bg-neutral-50 rounded-xl flex flex-col items-start justify-start overflow-scroll overflow-x-hidden">
             <h2 className="text-3xl font-semibold ml-4">Bookmarks</h2>

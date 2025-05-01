@@ -90,6 +90,14 @@ const Discover = ()=>{
         enabled:!!ProfileData?.github
     });
 
+    const getBookmarks = async ()=>{
+        const res = await axios.get(`https://lin.kerolos-safwat.me/api/v1/user/jobs/${localStorage.getItem("userId")}`,{headers:{'Authorization': `Bearer ${Cookies.get("devtoken")}`}});
+        return res.data.data;
+    }
+    const {data:bookmarks,error,isLoading:bookmarksisLoading,refetch} = useQuery(
+        {queryKey:["bookmarks"], queryFn: getBookmarks}
+    )
+
     // console.log(githubLoading);
 
     // const GetGithubData = async ()=>{
@@ -111,7 +119,7 @@ const Discover = ()=>{
     
     return(
         <>
-        <ProfileContext.Provider value={{ProfileData,profileLoading,profileError,ProfileGithubData,githubLoading,githubError}}>
+        <ProfileContext.Provider value={{bookmarks,refetch,bookmarksisLoading,ProfileData,profileLoading,profileError,ProfileGithubData,githubLoading,githubError}}>
             {
                 profileLoading?
                 <div className="w-full h-[calc(100vh-100px)] flex justify-start items-center bg-[radial-gradient(ellipse_at_top_left,_#e3e5e6,_#efe8c1,_#f3e7cb)]">
