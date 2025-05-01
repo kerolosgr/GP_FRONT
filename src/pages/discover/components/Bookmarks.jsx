@@ -4,13 +4,12 @@ import JobCardSkeleton from "./JobCardSkeleton";
 import Cookies from "js-cookie";
 import { useQuery } from "@tanstack/react-query";
 
-const Bookmarks = ()=>{
+const Bookmarks = ({userid})=>{
     const getBookmarks = async ()=>{
         const res = await axios.get(`https://lin.kerolos-safwat.me/api/v1/user/jobs/${localStorage.getItem("userId")}`,{headers:{'Authorization': `Bearer ${Cookies.get("devtoken")}`}});
-        console.log(res.data.data);
         return res.data.data;
     }
-    const {data:bookmarks,error,isLoading} = useQuery(
+    const {data:bookmarks,error,isLoading,refetch} = useQuery(
         {queryKey:["bookmarks"], queryFn: getBookmarks}
     )
     return(
@@ -26,7 +25,7 @@ const Bookmarks = ()=>{
                 :
                 bookmarks.length>0?
                 bookmarks?.map(
-                    (bookmark,i)=><JobCard saved={true} key={bookmark.jobLink} experience={bookmark.level} imageurl={bookmark.image_url} title={bookmark.job_title} description={bookmark.description} company={bookmark.companyName} location={bookmark.location} jobType={bookmark.job_type} url={bookmark.jobLink} date={bookmark.datePosted}/>
+                    (bookmark,i)=><JobCard userid={userid} refetch={refetch} saved={true} jobid={bookmark.id} key={bookmark.id} descriptionarray={bookmark.categories} experience={bookmark.level} imageurl={bookmark.image_url} title={bookmark.job_title} description={bookmark.description} company={bookmark.companyName} location={bookmark.location} jobType={bookmark.job_type} url={bookmark.jobLink} date={bookmark.datePosted}/>
                 )
                 :
                 <div className="w-full h-full flex flex-col justify-center items-center">

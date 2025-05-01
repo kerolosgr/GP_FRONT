@@ -80,7 +80,7 @@ const SideBar = ()=>{
             {View === "profile" && <Profile />}
             {View === "papers" && <Papers />}
             {View === "jobs" && <Jobs />}
-            {View === "bookmarks" && <Bookmarks />}
+            {View === "bookmarks" && <Bookmarks userid={ProfileData?.id} />}
             {View === "courses" && <Courses />}
             {View === "github" && <GithubRepos />}
             {View === "editor" && <CodeEditor />}

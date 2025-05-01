@@ -38,7 +38,7 @@ const Jobs = ()=>{
                 </div>
                 :
                 Jobs?.map(
-                    (job,i)=><JobCard key={job.job_url} descriptionarray={job.Description.categories} experience={job.Description.level} imageurl={job.image_url} title={job.job_title} description={job.description} company={job.company_name} location={job.location} jobType={job.job_type[0]} url={job.job_url} date={job.datePosted}/>
+                    (job,i)=><JobCard userid={ProfileData?.id} key={job.job_url} descriptionarray={job.Description.categories} experience={job.Description.level} imageurl={job.image_url} title={job.job_title} description={job.description} company={job.company_name} location={job.location} jobType={job.job_type[0]} url={job.job_url} date={job.datePosted}/>
                 )
                 // indeedJobs?.data.data.map(
                 //     (job,i)=><JobCard key={i} title={job.positionName} description={job.description} company={job.company} location={job.location} jobType={job.jobType[0]} url={job.url} date={job.postingDateParsed}/>

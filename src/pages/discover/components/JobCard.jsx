@@ -4,10 +4,56 @@ import { Activity, Bookmark, BriefcaseBusiness, Check, Link2, MapPin, SquareArro
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { format,formatDistance,formatDate,subDays } from "date-fns";
+import axios from "axios";
+import { toast } from "sonner";
+import Cookies from "js-cookie";
 
-const JobCard = ({title,company,location,jobType,description,url,date,imageurl,experience,saved,descriptionarray}) => {
+const JobCard = ({jobid,userid,title,company,location,jobType,description,url,date,imageurl,experience,saved,descriptionarray,refetch}) => {
     const [isVisible,setisVisible] = useState(false);
     const [isCopied,setisCopied] = useState(false);
+
+    const handleSaveJob = async ()=>{
+            try{
+                await axios.post(`https://lin.kerolos-safwat.me/api/v1/user/saveJob?userId=${userid}`,
+                    {
+                        job_title: title,
+                        job_type: jobType,
+                        companyName: company,
+                        location: location,
+                        datePosted: date,
+                        jobLink: url,
+                        image_url: imageurl,
+                        categories: descriptionarray,
+                        experience: experience,
+                        level: experience
+                      },
+                    {headers:{'Authorization': `Bearer ${Cookies.get("devtoken")}`}}
+                )
+                toast("Job Saved");
+            }
+            catch(err){
+                toast("Failed to save job");
+            }
+    }
+
+    const handleUnsaveJob = async ()=>{
+        try{
+            axios.delete(`https://lin.kerolos-safwat.me/api/v1/user/delete-job?userId=${userid}&jobId=${jobid}`,{headers:{'Authorization': `Bearer ${Cookies.get("devtoken")}`}}).then(
+                (res)=>{
+                    toast("Job Unsaved");
+                }
+            )
+            setTimeout(
+                async ()=>{
+                    await refetch();
+                },200
+            )
+            
+        }
+        catch(err){
+            toast("Failed to unsave job");
+        }
+    }
 
     const handleCopyToClipboard = ()=>{
         navigator.clipboard.writeText(url);
@@ -62,7 +108,7 @@ const JobCard = ({title,company,location,jobType,description,url,date,imageurl,e
                 <p className="mt-2 text-[14px] font-semibold text-gray-700 max-h-[200px] line-clamp-6">{descriptionarray.join(" . ")}</p>
                 <div className="mt-10 ml-auto flex justify-center items-center">
                 <a href={url} target="_blank" className="bg-black font-semibold text-white rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-900 flex justify-center items-center"><SquareArrowOutUpRight className="mr-2" size={15} />Apply</a>
-                <Button className="mx-2 rounded" variant={"dark"}><Bookmark fill={saved?"#FFFFFF":"none"} /></Button>
+                <Button onClick={()=>{!saved?handleSaveJob():handleUnsaveJob()}} className="mx-2 rounded" variant={"dark"}><Bookmark fill={saved?"#FFFFFF":"none"} /></Button>
                 <Button onClick={handleCopyToClipboard} className="bg-white font-semibold text-black border rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-50 flex justify-center items-center transition cursor-pointer">{isCopied?<Check />:<Link2 />}</Button>
                 </div>
                 
