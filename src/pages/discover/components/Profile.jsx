@@ -61,7 +61,7 @@ const Profile = ()=>{
             <h1 className="text-black text-[28px] font-[380] ">Welcome in , {ProfileData?.name}</h1>
             <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-2 mt-4">
 
-                <div className="aspect-square rounded-[50px] shadow relative overflow-hidden">
+                <div className="aspect-square flex rounded-[50px] shadow relative overflow-hidden">
                     <Avatar className="w-full h-full">
                      <AvatarImage className="w-full h-full object-cover" src={githubLoading?null:ProfileGithubData?.avatar_url} />
                      <AvatarFallback><img src="/assets/Cute Avatar2.png" /></AvatarFallback>
@@ -116,7 +116,7 @@ const Profile = ()=>{
                     </div> */}
                 </div>
 
-                <div className="col-span-2 rounded-[50px] p-4 bg-white h-[800px] overflow-hidden">
+                <div className="col-span-1 md:col-span-2 h-fit rounded-[50px] p-4 bg-white overflow-hidden">
                 <img src={resumeImage} className="w-full h-fit object-contain"/>
                 </div>
 
