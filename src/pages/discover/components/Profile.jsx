@@ -80,7 +80,7 @@ const Profile = ()=>{
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-start items-start aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[10px] md:pb-[20px] rounded-[50px] shadow overflow-hidden relative">
+                <div className="flex flex-col justify-start items-start col-span-1 h-fit md:aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[10px] md:pb-[20px] rounded-[30px] md:rounded-[50px] shadow overflow-hidden relative">
                      <div className="w-full flex flex-col gap-y-3">
                          <h5 className="text-black text-[22px] font-light">Personal Info</h5>
                          <span className="flex items-center"><IdCard className="mr-2" /><p className="">{ProfileData?.id}</p></span>
@@ -91,7 +91,7 @@ const Profile = ()=>{
                      </div>
                 </div>
 
-                <div className="flex flex-col justify-start items-start aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[10px] md:pb-[20px] rounded-[50px] shadow overflow-hidden relative">
+                <div className="flex flex-col justify-start items-start col-span-1 h-fit md:aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[10px] md:pb-[20px] rounded-[30px] md:rounded-[50px] shadow overflow-hidden relative">
                     <h2 className="text-black text-[22px] font-light">Skills</h2>
                     <div className="mt-[10px]">
                     {
@@ -105,7 +105,7 @@ const Profile = ()=>{
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-start items-start aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[10px] md:pb-[20px] rounded-[50px] shadow overflow-hidden relative">
+                <div className="flex flex-col justify-start items-start col-span-1 h-fit md:aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[10px] md:pb-[20px] rounded-[30px] md:rounded-[50px] shadow overflow-hidden relative">
                     <h2 className="text-black text-[22px] font-light">Your Resume Score</h2>
                     <div className="w-full h-fit flex justify-center items-center my-4">
                     <CircularProgressbar className='w-[150px] h-[150px] aspect-square my-2' minValue={0} maxValue={100} value={80} text={`${80}%`} styles={buildStyles({rotation: 0.5 , pathColor: `rgba(255, 216, 96, 1`,textColor: '#706f6e',trailColor: 'transparent',pathTransitionDuration: 0.5,})} />
@@ -116,7 +116,7 @@ const Profile = ()=>{
                     </div> */}
                 </div>
 
-                <div className="col-span-1 md:col-span-2 h-fit rounded-[50px] p-4 bg-white overflow-hidden">
+                <div className="col-span-1 md:col-span-2 h-fit rounded-[30px] md:rounded-[50px] p-4 bg-white overflow-hidden">
                 <img src={resumeImage} className="w-full h-fit object-contain"/>
                 </div>
 
