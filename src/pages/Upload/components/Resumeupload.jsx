@@ -16,11 +16,11 @@ import Introduction6 from "./Introduction6";
 import axios from "axios";
 import { UserIdContext } from "@/components/context/UserIdContext";
 import LoadingResume from "./LoadingResume";
-const ResumeUpload = ({setVerifyStep,setIsLogging,setidToLogin,verifyStep,viewOTP,setviewOTP})=>{
+const ResumeUpload = ({setisUploading,setVerifyStep,setIsLogging,setidToLogin,verifyStep,viewOTP,setviewOTP})=>{
     const [IsEnterCodeOpened,setIsEnterCodeOpened] = useState(false);
     const [code,setcode]=useState("");
     const navigate = useNavigate();
-    const [isUploading,setisUploading] = useState(false);
+    // const [isUploading,setisUploading] = useState(false);
     const [Introduction,setIntroduction] = useState(1);
     const [Transition,setTransition] = useState(false);
     const [isFinished,setisFinished] = useState(false);
@@ -117,7 +117,7 @@ const ResumeUpload = ({setVerifyStep,setIsLogging,setidToLogin,verifyStep,viewOT
         </DialogContent>
         </Dialog>
 
-        <Dialog open={isUploading}>
+        {/* <Dialog open={isUploading}>
         <DialogContent className="min-w-full md:min-w-[800px] h-[95vh] md:h-[98vh] flex flex-col">
             <DialogHeader>
             <DialogTitle>Uploading And Processing Your Resume</DialogTitle>
@@ -125,8 +125,8 @@ const ResumeUpload = ({setVerifyStep,setIsLogging,setidToLogin,verifyStep,viewOT
             Please wait while we are uploading and processing your resume.
             </DialogDescription>
             </DialogHeader>
-            <div className={"flex h-full items-center justify-center overflow-auto "+`transition-opacity duration-500 ease-in-out ${Transition ? 'opacity-0' : 'opacity-100'}`}>
-                {<LoadingResume/>}
+            <div className={"flex h-full items-center justify-center overflow-auto "+`transition-opacity duration-500 ease-in-out ${Transition ? 'opacity-0' : 'opacity-100'}`}> */}
+                {/* {<LoadingResume/>} */}
                 {/* {Introduction==1&&<Introduction1/>}
                 {Introduction==2&&<Introduction2/>}
                 {Introduction==3&&<Introduction3/>}
@@ -137,10 +137,10 @@ const ResumeUpload = ({setVerifyStep,setIsLogging,setidToLogin,verifyStep,viewOT
             {/* <img className={`absolute left-0 top-0 transition ease-in-out duration-10000 ${uploadingTransition?"opacity-100":"opacity-0"}`} src="/assets/person-1.webp"/>
             <img className={`absolute left-0 top-0 transition ease-in-out duration-30000  ${uploadingTransition?"opacity-100":"opacity-0"}`} src="/assets/person-2.webp"/>
             <img className={`absolute left-0 top-0 transition ease-in-out duration-50000  ${uploadingTransition?"opacity-100":"opacity-0"}`} src="/assets/person-3.webp"/> */}
-            </div>
+            {/* </div> */}
             {/* <Button disabled={Introduction==6&&!verifyStep} onClick={handleNextIntroduction} variant={"dark"} className={"w-[200px] self-end"}>{Introduction==7 ?"Go To Dashboard":"Next"}</Button> */}
-        </DialogContent>
-        </Dialog>
+        {/* </DialogContent>
+        </Dialog> */}
         </>
     )
 }

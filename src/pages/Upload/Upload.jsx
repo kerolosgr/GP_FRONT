@@ -3,6 +3,7 @@ import VerifyOTP from "../VerifyOTP/VerifyOTP";
 import Info from "./components/Info";
 import ResumeUpload from "./components/Resumeupload";
 import axios from "axios";
+import UploadingMessage from "./UploadingMessage";
 
 
 const Upload = ()=>{
@@ -12,6 +13,7 @@ const Upload = ()=>{
     const [isLogging,setIsLogging] = useState(false);
     const [idToLogin,setidToLogin] = useState(localStorage.getItem("idToLogin"));
     const [viewOTP,setviewOTP] = useState(false);
+    const [isUploading,setisUploading] = useState(false);
     if(verifyStep){
         try{
             if(idToLogin!=null){
@@ -27,11 +29,12 @@ const Upload = ()=>{
             // console.log("error hena");
         }
     }
-    if(viewOTP || idToLogin) return(<VerifyOTP setVerifyStep={setVerifyStep} idToLogin={idToLogin} setidToLogin={setidToLogin} isLogging={isLogging} OTPQR_URL={OTPQR_URL}/>)
+    if(viewOTP || idToLogin) return(<VerifyOTP setVerifyStep={setVerifyStep} idToLogin={idToLogin} setidToLogin={setidToLogin} isLogging={isLogging} OTPQR_URL={OTPQR_URL}/>);
+    if(isUploading){return <UploadingMessage/>}
     return(
         <>
         <Info/>
-        <ResumeUpload setidToLogin={setidToLogin} viewOTP={viewOTP} setviewOTP={setviewOTP} verifyStep={verifyStep} setVerifyStep={setVerifyStep} setIsLogging={setIsLogging}/>
+        <ResumeUpload setisUploading={setisUploading} setidToLogin={setidToLogin} viewOTP={viewOTP} setviewOTP={setviewOTP} verifyStep={verifyStep} setVerifyStep={setVerifyStep} setIsLogging={setIsLogging}/>
         </>
     )
 }
