@@ -43,8 +43,8 @@ const VerifyOTP = ({OTPQR_URL,isLogging,setidToLogin,idToLogin,setVerifyStep})=>
     }
     return(
         <>
-        <div className="flex justify-center items-center w-full min-h-[calc(100vh-100px)] h-fit bg-neutral-100 mx-auto rounded">
-        <div className="flex flex-col justify-start p-[20px] items-center w-[80%] h-[500px] bg-white rounded-xl">
+        <div className="flex justify-center items-center w-full min-h-[calc(100vh-100px)] h-fit bg-[radial-gradient(ellipse_at_top_left,_#e3e5e6,_#efe8c1,_#f3e7cb)] mx-auto rounded">
+        <div className="flex flex-col justify-start p-[20px] items-center w-[80%] h-fit bg-white rounded-xl">
             <div className="flex items-center">
         <svg
   xmlns="http://www.w3.org/2000/svg"
