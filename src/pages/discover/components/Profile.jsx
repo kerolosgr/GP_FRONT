@@ -61,12 +61,12 @@ const Profile = ()=>{
             <h1 className="text-black text-[28px] font-[380] ">Welcome in , {ProfileData?.name}</h1>
             <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-2 mt-4">
 
-                <div className="aspect-square rounded-[50px] shadow overflow-hidden relative">
+                <div className="aspect-square rounded-[50px] shadow relative overflow-hidden">
                     <Avatar className="w-full h-full">
                      <AvatarImage className="w-full h-full object-cover" src={githubLoading?null:ProfileGithubData?.avatar_url} />
                      <AvatarFallback><img src="/assets/Cute Avatar2.png" /></AvatarFallback>
                      </Avatar>
-                    <div className="absolute flex items-center justify-between px-8 py-4 w-full bottom-0 bg-gradient-to-t from-black/60 to-transparent">
+                    <div className="absolute flex items-center justify-between px-8 py-4 w-full bottom-0 left-0 bg-gradient-to-t from-black/60 to-transparent">
                     
                     <div className="flex flex-col">
                     <h2 className="text-xl font-[480] text-white">{ProfileData?.name}</h2>
@@ -80,7 +80,7 @@ const Profile = ()=>{
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-start items-start aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[40px] pb-[20px] rounded-[50px] shadow overflow-hidden relative">
+                <div className="flex flex-col justify-start items-start aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[10px] md:pb-[20px] rounded-[50px] shadow overflow-hidden relative">
                      <div className="w-full flex flex-col gap-y-3">
                          <h5 className="text-black text-[22px] font-light">Personal Info</h5>
                          <span className="flex items-center"><IdCard className="mr-2" /><p className="">{ProfileData?.id}</p></span>
@@ -91,7 +91,7 @@ const Profile = ()=>{
                      </div>
                 </div>
 
-                <div className="flex flex-col justify-start items-start aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[40px] pb-[20px] rounded-[50px] shadow overflow-hidden relative">
+                <div className="flex flex-col justify-start items-start aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[10px] md:pb-[20px] rounded-[50px] shadow overflow-hidden relative">
                     <h2 className="text-black text-[22px] font-light">Skills</h2>
                     <div className="mt-[10px]">
                     {
@@ -105,7 +105,7 @@ const Profile = ()=>{
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-start items-start aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[40px] pb-[20px] rounded-[50px] shadow overflow-hidden relative">
+                <div className="flex flex-col justify-start items-start aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[10px] md:pb-[20px] rounded-[50px] shadow overflow-hidden relative">
                     <h2 className="text-black text-[22px] font-light">Your Resume Score</h2>
                     <div className="w-full h-fit flex justify-center items-center my-4">
                     <CircularProgressbar className='w-[150px] h-[150px] aspect-square my-2' minValue={0} maxValue={100} value={80} text={`${80}%`} styles={buildStyles({rotation: 0.5 , pathColor: `rgba(255, 216, 96, 1`,textColor: '#706f6e',trailColor: 'transparent',pathTransitionDuration: 0.5,})} />
