@@ -135,8 +135,8 @@ const VerifyOTP = ({OTPQR_URL,isLogging,setidToLogin,idToLogin,setVerifyStep})=>
                     <InputOTPSlot className={"md:text-[32px] md:p-[30px] "+cn(wrongOTP?"border-red-500":null)} index={5} />
                 </InputOTPGroup>
                 </InputOTP>
-                <Button onClick={()=>verifyOtp()} className="m-[20px]" size={"lg"}>Verify</Button>
-                <Button onClick={()=>{localStorage.removeItem('idToLogin');setidToLogin(null);setVerifyStep(false);}} className={"m-[20px]"} size={"lg"} variant={"outline"}>Cancel</Button>
+                <Button onClick={()=>verifyOtp()} className="m-[5px] md:ml-[20px]" size={"lg"}>Verify</Button>
+                <Button onClick={()=>{localStorage.removeItem('idToLogin');setidToLogin(null);setVerifyStep(false);}} className={"m-[5px] md:ml-[20px]"} size={"lg"} variant={"outline"}>Cancel</Button>
                 </div>
                 {wrongOTP?<p className="text-red-500 text-[15px] mt-2 font-semibold">The code you entered is incorrect</p>:null}
                 </div>
