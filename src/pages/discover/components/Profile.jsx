@@ -59,7 +59,7 @@ const Profile = ()=>{
     return(
         <div className="w-full h-fit flex flex-col justify-start items-start p-4 bg-neutral-50/20 rounded-2xl">
             <h1 className="text-black text-[28px] font-[380] ">Welcome in , {ProfileData?.name}</h1>
-            <div className="w-full grid grid-cols-4 gap-2 mt-4">
+            <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-2 mt-4">
 
                 <div className="aspect-square rounded-[50px] shadow overflow-hidden relative">
                     <Avatar className="w-full h-full">
