@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Activity, Bookmark, BriefcaseBusiness, Check, Link2, MapPin, SquareArrowOutUpRight, Stars } from "lucide-react";
+import { Activity, Bookmark, BriefcaseBusiness, Check, Link2, LoaderCircle, MapPin, SquareArrowOutUpRight, Stars } from "lucide-react";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { format,formatDistance,formatDate,subDays } from "date-fns";
@@ -13,8 +13,10 @@ const JobCard = ({jobid,userid,title,company,location,jobType,description,url,da
     const [isVisible,setisVisible] = useState(false);
     const [isCopied,setisCopied] = useState(false);
     const {refetch} = useContext(ProfileContext);
+    const [isHandling,setisHandling] = useState(false);
 
     const handleSaveJob = async ()=>{
+        setisHandling(true);
             try{
                 await axios.post(`https://lin.kerolos-safwat.me/api/v1/user/saveJob?userId=${userid}`,
                     {
@@ -31,11 +33,13 @@ const JobCard = ({jobid,userid,title,company,location,jobType,description,url,da
                       },
                     {headers:{'Authorization': `Bearer ${Cookies.get("devtoken")}`}}
                 )
+                
                 setTimeout(
                     async ()=>{
                         await refetch();
                         toast("Job Saved");
-                    },200
+                        setisHandling(false);
+                    },250
                 )
             }
             catch(err){
@@ -44,14 +48,18 @@ const JobCard = ({jobid,userid,title,company,location,jobType,description,url,da
     }
 
     const handleUnsaveJob = async ()=>{
+        setisHandling(true);
         try{
             axios.delete(`https://lin.kerolos-safwat.me/api/v1/user/delete-job?userId=${userid}&jobId=${jobid}`,{headers:{'Authorization': `Bearer ${Cookies.get("devtoken")}`}});
+            
             setTimeout(
                 async ()=>{
                     await refetch();
                     toast("Job Unsaved");
-                },200
+                    setisHandling(false);    
+                },250
             )
+            
             
         }
         catch(err){
@@ -112,7 +120,7 @@ const JobCard = ({jobid,userid,title,company,location,jobType,description,url,da
                 <p className="mt-2 text-[14px] font-semibold text-gray-700 max-h-[200px] line-clamp-6">{descriptionarray.join(" . ")}</p>
                 <div className="mt-10 ml-auto flex justify-center items-center">
                 <a href={url} target="_blank" className="bg-black font-semibold text-white rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-900 flex justify-center items-center"><SquareArrowOutUpRight className="mr-2" size={15} />Apply</a>
-                <Button onClick={()=>{!saved?handleSaveJob():handleUnsaveJob()}} className="mx-2 rounded" variant={"dark"}><Bookmark fill={saved?"#FFFFFF":null} /></Button>
+                <Button disabled={isHandling} onClick={()=>{!saved?handleSaveJob():handleUnsaveJob()}} className="mx-2 rounded" variant={"dark"}>{isHandling?<LoaderCircle strokeWidth={3} className="animate-spin"/>:<Bookmark fill={saved?"#FFFFFF":null}/>}</Button>
                 <Button onClick={handleCopyToClipboard} className="bg-white font-semibold text-black border rounded text-[14px] py-2 px-4 h-9 hover:bg-neutral-50 flex justify-center items-center transition cursor-pointer">{isCopied?<Check />:<Link2 />}</Button>
                 </div>
                 
