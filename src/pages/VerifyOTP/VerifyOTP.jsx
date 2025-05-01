@@ -123,7 +123,7 @@ const VerifyOTP = ({OTPQR_URL,isLogging,setidToLogin,idToLogin,setVerifyStep})=>
                     </>
                   }
                 
-                <div className="flex justify-center items-center mt-4">
+                <div className="flex flex-col md:flex-row justify-center items-center mt-4">
                 <InputOTP maxLength={6} value={code} autoFocus
                 onChange={(value) => setCode(value)}>
                 <InputOTPGroup className={"border-red shadow-red-600"}>
