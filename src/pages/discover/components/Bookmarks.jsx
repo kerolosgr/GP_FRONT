@@ -24,9 +24,14 @@ const Bookmarks = ()=>{
                     (i,_)=> <JobCardSkeleton key={_}/>
                 )
                 :
+                bookmarks.length>0?
                 bookmarks?.map(
                     (bookmark,i)=><JobCard saved={true} key={bookmark.jobLink} experience={bookmark.level} imageurl={bookmark.image_url} title={bookmark.job_title} description={bookmark.description} company={bookmark.companyName} location={bookmark.location} jobType={bookmark.job_type} url={bookmark.jobLink} date={bookmark.datePosted}/>
                 )
+                :
+                <div className="w-full h-full flex flex-col justify-center items-center">
+                <h2 className="font-semibold text-center">No Bookmarks Found</h2>
+                </div>
             }
             </div>
         </div>
