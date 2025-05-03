@@ -37,13 +37,13 @@ const JobCard = ({jobid,userid,title,company,location,jobType,description,url,da
                 setTimeout(
                     async ()=>{
                         await refetch();
-                        toast("Job Saved");
+                        toast.success("Job Saved");
                         setisHandling(false);
                     },250
                 )
             }
             catch(err){
-                toast("Failed to save job");
+                toast.error("Failed to save job");
             }
     }
 
@@ -55,7 +55,7 @@ const JobCard = ({jobid,userid,title,company,location,jobType,description,url,da
             setTimeout(
                 async ()=>{
                     await refetch();
-                    toast("Job Unsaved");
+                    toast.success("Job Unsaved");
                     setisHandling(false);    
                 },250
             )
@@ -63,7 +63,7 @@ const JobCard = ({jobid,userid,title,company,location,jobType,description,url,da
             
         }
         catch(err){
-            toast("Failed to unsave job");
+            toast.error("Failed to unsave job");
         }
     }
 

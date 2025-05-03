@@ -51,18 +51,18 @@ const Discover = ()=>{
         catch(err){
             // console.log(err);
             if(err.status==400){
-                toast("We couldn't find your user. Please try again or create a new profile.");
+                toast.error("We couldn't find your user. Please try again or create a new profile.");
                 navigate('/start');
                 setshowDiscover(false);
             }
             if(err.status==401){
                 localStorage.setItem('idToLogin',userId);
-                toast("Please Login First");
+                toast.error("Please Login First");
                 navigate('/start');
                 setshowDiscover(false);
             }
             if(err.status==404){
-                toast("You Don't have permission to access this page.");
+                toast.error("You Don't have permission to access this page.");
                 navigate('/start');
                 setshowDiscover(false);
             }
@@ -79,7 +79,7 @@ const Discover = ()=>{
         return null;
     }
 
-    const {data: ProfileData, isLoading:profileLoading, error:profileError} = useQuery({
+    const {data: ProfileData, isLoading:profileLoading, error:profileError,refetch:profilerefetch} = useQuery({
         queryKey:["profile",userId],
         queryFn: fetchUserProfile
     });
@@ -119,7 +119,7 @@ const Discover = ()=>{
     
     return(
         <>
-        <ProfileContext.Provider value={{bookmarks,refetch,bookmarksisLoading,ProfileData,profileLoading,profileError,ProfileGithubData,githubLoading,githubError}}>
+        <ProfileContext.Provider value={{profilerefetch,bookmarks,refetch,bookmarksisLoading,ProfileData,profileLoading,profileError,ProfileGithubData,githubLoading,githubError}}>
             {
                 profileLoading?
                 <div className="w-full h-[calc(100vh-100px)] flex justify-start items-center bg-[radial-gradient(ellipse_at_top_left,_#e3e5e6,_#efe8c1,_#f3e7cb)]">

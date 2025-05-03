@@ -9,7 +9,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-const VerifyOTP = ({OTPQR_URL,isLogging,setidToLogin,idToLogin,setVerifyStep})=>{
+const VerifyOTP = ({OTPQR_URL,isLogging,setidToLogin,idToLogin,setVerifyStep,setisUploading})=>{
     const [code, setCode] = useState("");
     const [wrongOTP,setwrongOTP] = useState(false);
     const navigate = useNavigate();
@@ -23,9 +23,9 @@ const VerifyOTP = ({OTPQR_URL,isLogging,setidToLogin,idToLogin,setVerifyStep})=>
         }).then(
             res=>{
                 setwrongOTP(false);
-                console.log(res.data);
-                console.log(res.data.data.userId);
-                console.log(res.data.data.token);
+                // console.log(res.data);
+                // console.log(res.data.data.userId);
+                // console.log(res.data.data.token);
                 Cookies.set("devtoken",res.data.data.token);
                 localStorage.setItem("userId",res.data.data.userId);
                 navigate('/discover/'+localStorage.getItem("userId"));
@@ -37,7 +37,7 @@ const VerifyOTP = ({OTPQR_URL,isLogging,setidToLogin,idToLogin,setVerifyStep})=>
             }
             if(err.response?.status==400){
                 setwrongOTP(true);
-                toast("User Not Found");
+                toast.error("User Not Found");
             }
         }
     }
@@ -136,7 +136,7 @@ const VerifyOTP = ({OTPQR_URL,isLogging,setidToLogin,idToLogin,setVerifyStep})=>
                 </InputOTPGroup>
                 </InputOTP>
                 <Button onClick={()=>verifyOtp()} className="m-[5px] md:ml-[20px]" size={"lg"}>Verify</Button>
-                <Button onClick={()=>{localStorage.removeItem('idToLogin');setidToLogin(null);setVerifyStep(false);}} className={"m-[5px] md:ml-[20px]"} size={"lg"} variant={"outline"}>Cancel</Button>
+                <Button onClick={()=>{localStorage.removeItem('idToLogin');setisUploading(false);setidToLogin(null);setVerifyStep(false);}} className={"m-[5px] md:ml-[20px]"} size={"lg"} variant={"outline"}>Cancel</Button>
                 </div>
                 {wrongOTP?<p className="text-red-500 text-[15px] mt-2 font-semibold">The code you entered is incorrect</p>:null}
                 </div>

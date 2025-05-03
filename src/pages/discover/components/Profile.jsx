@@ -4,14 +4,17 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Book, CircleHelp, Earth, Eye, Github, IdCard, Mail } from "lucide-react";
-import { useContext, useEffect } from "react";
+import { Book, CircleHelp, Earth, Eye, Github, IdCard, LoaderCircle, Mail, Pencil } from "lucide-react";
+import { useContext, useEffect, useState } from "react";
 import { tips } from "./tips";
 import ResumeScore from "./ResumeScore";
 import Cookies from "js-cookie";
 import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
 const Profile = ()=>{
-    const {ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData} = useContext(ProfileContext);
+    const {ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData,profilerefetch} = useContext(ProfileContext);
     // const GetGithubData = async ()=>{
     //     const response = await axios.get("https://api.github.com/users/kerolosgr");
     //     return response.data;
@@ -21,6 +24,54 @@ const Profile = ()=>{
     //     queryFn: GetGithubData
     // });
     // if(!isLoading) console.log(data)
+    const [viewUpdate,setviewUpdate] = useState(false);
+    const [isUpdating,setisUpdating]= useState(false);
+    const [updatedData,setupdatedData] = useState({
+            "userId": 631385,
+            careerName: ProfileData?.careerName,
+            education: ProfileData?.collegeName,
+            email: ProfileData?.email,
+            github: ProfileData?.github,
+            linkedin: ProfileData?.linkedin,
+            location: ProfileData?.location,
+            name: ProfileData?.name,
+            projects: ProfileData?.projects,
+            skills: ProfileData?.skills,
+        // userId:ProfileData?.id,
+        // name:ProfileData?.name,
+        // careerName:ProfileData?.careerName,
+        // collegeName:ProfileData?.collegeName,
+        // skills:ProfileData?.skills,
+        // github:ProfileData?.github,
+        // email:ProfileData?.email,
+        // location:ProfileData?.location
+    });
+
+    const handleUpdateField = (e)=>{
+        if(e.target.name == "skills"){
+            const skills = e.target.value.split(",");
+            setupdatedData({...updatedData,[e.target.name]:skills});
+        }else if(e.target.name == "education"){
+            const education = e.target.value;
+            setupdatedData({...updatedData,[e.target.name]:[education]});
+        }else{
+         setupdatedData({...updatedData,[e.target.name]:e.target.value});   
+        } 
+    };
+
+    const updateProfile = async ()=>{
+        setisUpdating(true);
+        try{
+            await axios.put('https://lin.kerolos-safwat.me/api/v1/user/update-user',updatedData,{headers:{'Authorization': `Bearer ${Cookies.get("devtoken")}`}});
+            toast.success("Profile Updated Successfully");
+            profilerefetch();
+            setisUpdating(false);
+            setviewUpdate(false);
+        }catch(err){
+            console.log(err);
+            toast.error("Something went wrong");
+        }
+    }
     const giveTips = (tipsNumber)=>{
         const tipsarray = [];
         for(let i=0; i<tipsNumber; i++){
@@ -57,11 +108,12 @@ const Profile = ()=>{
     });
     // bg-[radial-gradient(ellipse_at_top_left,_#fefce8,_#f5f5f5,_#e0e0e0)]
     return(
+        <>
         <div className="w-full h-fit flex flex-col justify-start items-start p-4 bg-neutral-50/20 rounded-2xl">
             <h1 className="text-black text-[28px] font-[380] ">Welcome in , {ProfileData?.name}</h1>
             <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-2 mt-4">
 
-                <div className="aspect-square flex rounded-[50px] shadow relative overflow-hidden">
+                <div className="aspect-square flex rounded-[50px] shadow relative overflow-hidden group">
                     <Avatar className="w-full h-full">
                      <AvatarImage className="w-full h-full object-cover" src={githubLoading?null:ProfileGithubData?.avatar_url} />
                      <AvatarFallback><img src="/assets/Cute Avatar2.png" /></AvatarFallback>
@@ -72,11 +124,9 @@ const Profile = ()=>{
                     <h2 className="text-xl font-[480] text-white">{ProfileData?.name}</h2>
                     <span className="text-sm font-[480] text-white/80">{ProfileData?.careerName}</span>
                     </div>
-
-                    
-                    <div className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-sm font-medium text-white">
-                    {ProfileData?.salary}
                     </div>
+                    <div className="absolute top-[-50px] opacity-0 right-0 group-hover:top-[20px] group-hover:right-4 group-hover:opacity-100 transition-all ease-in-out duration-200 p-1 w-[40px] h-[40px] hover:scale-[1.2] transform-gpu rounded-full bg-white/20 backdrop-blur-md text-sm font-medium text-white">
+                    <Button onClick={()=>setviewUpdate(true)} variant={"dark"} className={"w-full h-full rounded-full px-7 py-2"}><Pencil className="w-full h-full" strokeWidth={1.5} /></Button>
                     </div>
                 </div>
 
@@ -122,6 +172,24 @@ const Profile = ()=>{
 
             </div>
         </div>
+        <Dialog open={viewUpdate} onOpenChange={setviewUpdate}>
+            <DialogContent className={"min-w-[900px] h-fit py-10"}>
+                <DialogHeader>
+                    <DialogTitle>Update your personal information to keep your account up-to-date.</DialogTitle>
+                </DialogHeader>
+                <div className="w-full h-full grid grid-cols-3 gap-4">
+                    <Input onChange={handleUpdateField} name="name" type={"text"} className={"col-span-1"} placeholder={"Name"} value={updatedData?.name} disabled={isUpdating} />
+                    <Input onChange={handleUpdateField} name="email" type={"text"} className={"col-span-1"} placeholder={"Email"} value={updatedData?.email} disabled={isUpdating} />
+                    <Input onChange={handleUpdateField} name="github" type={"text"} className={"col-span-1"} placeholder={"Github"} value={updatedData?.github} disabled={isUpdating} />
+                    <Input onChange={handleUpdateField} name="careerName" type={"text"} className={"col-span-1"} placeholder={"Career"} value={updatedData?.careerName} disabled={isUpdating} />
+                    <Input onChange={handleUpdateField} name="location" type={"text"} className={"col-span-1"} placeholder={"Location"} value={updatedData?.location} disabled={isUpdating} />
+                    <Input onChange={handleUpdateField} name="education" type={"text"} className={"col-span-1"} placeholder={"College"} value={updatedData?.education} disabled={isUpdating} />
+                    <Input onChange={handleUpdateField} name="skills" type={"text"} className={"col-span-2"} placeholder={"Skills"} value={updatedData?.skills} disabled={isUpdating} />
+                    <Button onClick={updateProfile} variant={"dark"} className={"col-end-4"}>{isUpdating?<LoaderCircle strokeWidth={3} className="animate-spin"/>:"Update"}</Button>
+                </div>
+            </DialogContent>
+        </Dialog>
+        </>
     )
 
     // return(

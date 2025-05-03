@@ -14,6 +14,7 @@ const Upload = ()=>{
     const [idToLogin,setidToLogin] = useState(localStorage.getItem("idToLogin"));
     const [viewOTP,setviewOTP] = useState(false);
     const [isUploading,setisUploading] = useState(false);
+    // console.log(isUploading);
     if(verifyStep){
         try{
             if(idToLogin!=null){
@@ -29,7 +30,7 @@ const Upload = ()=>{
             // console.log("error hena");
         }
     }
-    if(viewOTP || idToLogin) return(<VerifyOTP setVerifyStep={setVerifyStep} idToLogin={idToLogin} setidToLogin={setidToLogin} isLogging={isLogging} OTPQR_URL={OTPQR_URL}/>);
+    if(viewOTP || idToLogin) return(<VerifyOTP setisUploading={setisUploading} setVerifyStep={setVerifyStep} idToLogin={idToLogin} setidToLogin={setidToLogin} isLogging={isLogging} OTPQR_URL={OTPQR_URL}/>);
     if(isUploading){return <UploadingMessage/>}
     return(
         <>
