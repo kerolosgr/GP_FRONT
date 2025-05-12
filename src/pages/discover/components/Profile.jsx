@@ -27,7 +27,7 @@ const Profile = ()=>{
     const [viewUpdate,setviewUpdate] = useState(false);
     const [isUpdating,setisUpdating]= useState(false);
     const [updatedData,setupdatedData] = useState({
-            "userId": 631385,
+            userId: ProfileData?.id,
             careerName: ProfileData?.careerName,
             education: ProfileData?.collegeName,
             email: ProfileData?.email,
