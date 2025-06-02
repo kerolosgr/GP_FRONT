@@ -1,12 +1,14 @@
 import { Activity } from "lucide-react";
 import JobCard from "./JobCard";
 import JobCardSkeleton from "./JobCardSkeleton";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProfileContext } from "@/components/context/ProfileContext";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { cn } from "@/lib/utils";
 
 const Jobs = ()=>{
+    const [viewSrc,setviewSrc]=useState('indeed');
     const {bookmarks,ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData} = useContext(ProfileContext);
     const fetchindeedJobs = async ()=>{
         const res = await axios.get(`https://scrappingall-production.up.railway.app/scrape-jobs?query=${ProfileData?.careerName}&pages=2&country_symbol=EG&location=${ProfileData?.location}`);
@@ -23,6 +25,10 @@ const Jobs = ()=>{
         <>
         <div className="w-full h-full p-4 bg-neutral-50 rounded-xl flex flex-col items-start justify-start overflow-scroll overflow-x-hidden">
             <h2 className="text-3xl font-semibold ml-4">Jobs</h2>
+            <div className="w-full h-[40px] flex items-center gap-2 my-2">
+                <button onClick={()=> setviewSrc('wuzzuf')} className={cn(viewSrc=='wuzzuf'?"bg-black text-white":null)+" px-4 py-1 text-[14px] border rounded-full text-black"}>Wuzzuf</button>
+                <button onClick={()=> setviewSrc('indeed')} className={cn(viewSrc=='indeed'?"bg-black text-white":null)+" border px-4 py-1 text-[14px] rounded-full text-black"}>Indeed</button>
+            </div>
             <div className="w-full flex justify-start items-center gap-3 flex-wrap h-fit p-2 mt-4 overflow-y-auto">
                 {/* <JobCardSkeleton/> */}
 
