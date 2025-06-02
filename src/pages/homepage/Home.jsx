@@ -13,6 +13,13 @@ const Home = ()=>{
     </div>
     <img className="md:mr-4" width={550} height={550} src="/assets/home-3d.webp" />
     </div>
+    {/* <div className="w-full h-[110vh] bg-white flex flex-col justify-center items-center">
+      <div className="w-[80%] bg-[url('/assets/screen-home.png')] bg-center bg-cover h-[90%] bg-blue-50 rounded-xl border border-blue-200 flex flex-col items-center">
+         <div className="w-[20%] h-[30px] border border-blue-200 border-t-0 bg-black rounded-b-lg"></div>
+
+      </div>
+
+    </div> */}
     </>
  )
 }
