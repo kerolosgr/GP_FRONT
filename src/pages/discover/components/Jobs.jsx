@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { cn } from "@/lib/utils";
 
 const Jobs = ()=>{
-    const [viewSrc,setviewSrc]=useState('indeed');
+    const [viewSrc,setviewSrc]=useState('wuzzuf');
     const {bookmarks,ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData} = useContext(ProfileContext);
     const fetchindeedJobs = async ()=>{
         const res = await axios.get(`https://scrappingall-production.up.railway.app/scrape-jobs?query=${ProfileData?.careerName}&pages=2&country_symbol=EG&location=${ProfileData?.location}`);
