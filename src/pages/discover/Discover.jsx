@@ -84,8 +84,8 @@ const Discover = ()=>{
         queryFn: fetchUserProfile
     });
 
-    const {data: ProfileGithubData,isLoading:githubLoading,error:githubError} = useQuery({
-        queryKey:["github",ProfileData?.github_login],
+    const {data: ProfileGithubData,isLoading:githubLoading,error:githubError,refetch:githubrefetch} = useQuery({
+        queryKey:["github",ProfileData?.github],
         queryFn: fetchedgithubdata,
         enabled:!!ProfileData?.github
     });
@@ -119,7 +119,7 @@ const Discover = ()=>{
     
     return(
         <>
-        <ProfileContext.Provider value={{profilerefetch,bookmarks,refetch,bookmarksisLoading,ProfileData,profileLoading,profileError,ProfileGithubData,githubLoading,githubError}}>
+        <ProfileContext.Provider value={{githubrefetch,profilerefetch,bookmarks,refetch,bookmarksisLoading,ProfileData,profileLoading,profileError,ProfileGithubData,githubLoading,githubError}}>
             {
                 profileLoading?
                 <div className="w-full h-[calc(100vh-100px)] flex justify-start items-center bg-[radial-gradient(ellipse_at_top_left,_#e3e5e6,_#efe8c1,_#f3e7cb)]">

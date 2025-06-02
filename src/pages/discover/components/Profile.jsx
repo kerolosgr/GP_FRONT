@@ -14,7 +14,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 const Profile = ()=>{
-    const {ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData,profilerefetch} = useContext(ProfileContext);
+    const {ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData,profilerefetch,githubrefetch} = useContext(ProfileContext);
     // const GetGithubData = async ()=>{
     //     const response = await axios.get("https://api.github.com/users/kerolosgr");
     //     return response.data;
