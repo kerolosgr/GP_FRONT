@@ -10,7 +10,7 @@ const Courses = ()=>{
     const skillsConcat = ProfileData?.skills.join(' ');
 
     const fetchCourses = async ()=>{
-        const res = await axios.post(`https://scrappingall-production.up.railway.app/scrape-courses`,{query:skillsConcat});
+        const res = await axios.post(`https://web-production-1fe7.up.railway.app/scrape-courses`,{query:skillsConcat});
         // console.log(res.data);
         return res.data.result;
     };
