@@ -13,6 +13,7 @@ import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import AtsScore from "./AtsScore";
 const Profile = ()=>{
     const {ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData,profilerefetch,githubrefetch} = useContext(ProfileContext);
     // const GetGithubData = async ()=>{
@@ -155,16 +156,18 @@ const Profile = ()=>{
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-start items-start col-span-1 h-fit md:aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[20px] md:pb-[20px] rounded-[30px] md:rounded-[50px] shadow overflow-hidden relative">
+                {/* <div className="flex flex-col justify-start items-start col-span-1 h-fit md:aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[20px] md:pb-[20px] rounded-[30px] md:rounded-[50px] shadow overflow-hidden relative">
                     <h2 className="text-black text-[22px] font-light">Your Resume Score</h2>
                     <div className="w-full h-fit flex justify-center items-center my-4">
                     <CircularProgressbar className='w-[150px] h-[150px] aspect-square my-2' minValue={0} maxValue={100} value={80} text={`${80}%`} styles={buildStyles({rotation: 0.5 , pathColor: `rgba(255, 216, 96, 1`,textColor: '#706f6e',trailColor: 'transparent',pathTransitionDuration: 0.5,})} />
                     </div>
-                    <p className="text-black text-[14px] text-center w-full">You have completed 80% of your resume</p>
+                    <p className="text-black text-[14px] text-center w-full">You have completed 80% of your resume</p> */}
                     {/* <div className="flex justify-center items-center w-[40px] shadow mt-auto h-[40px] bg-neutral-50 rounded-full">
                     <Eye strokeWidth={1} size={20} />
                     </div> */}
-                </div>
+                {/* </div> */}
+
+                <AtsScore/>
 
                 <div className="col-span-1 md:col-span-2 h-fit rounded-[30px] md:rounded-[50px] p-4 bg-white overflow-hidden">
                 <img src={resumeImage} className="w-full h-fit object-contain"/>
