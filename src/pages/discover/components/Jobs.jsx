@@ -12,6 +12,7 @@ const Jobs = ()=>{
     const {bookmarks,ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData} = useContext(ProfileContext);
     const fetchingwuzzufjobs = async ()=>{
         const res = await axios.get(`https://web-production-1fe7.up.railway.app/scrape-jobs?query=${ProfileData?.careerName}&pages=2&country_symbol=EG&location=${ProfileData?.location}`);
+        console.log(res.data)
         return res.data.result;
     }
 
@@ -22,7 +23,7 @@ const Jobs = ()=>{
 
 
     const fetchingindeedjobs = async ()=>{
-        const res = await axios.get(`https://jobspyindeedlinkedin-production.up.railway.app/scrape_jobs_indeed?job_title=${ProfileData?.careerName}&city=${ProfileData?.location}&country=egypt`);
+        const res = await axios.get(`https://jobspyindeedlinkedin-production.up.railway.app/scrape_jobs_indeed?job_title=${ProfileData?.careerName}&city=${(ProfileData?.location).split(',')[0]}&country=${(ProfileData?.location).split(',')[1]}`);
         console.log(res.data)
         return res.data.result;
     }
@@ -33,8 +34,8 @@ const Jobs = ()=>{
     });
 
     const fetchinglinkedinjobs = async ()=>{
-        const res = await axios.get(`https://jobspyindeedlinkedin-production.up.railway.app/scrape_jobs_linkedin?job_title=${ProfileData?.careerName}&city=${ProfileData?.location}&country=egypt`);
-        console.log(res.data)
+        const res = await axios.get(`https://jobspyindeedlinkedin-production.up.railway.app/scrape_jobs_linkedin?job_title=${ProfileData?.careerName}&city=${(ProfileData?.location).split(',')[0]}&country=${(ProfileData?.location).split(',')[1]}`);
+        // console.log(res.data)
         return res.data.result;
     }
 
@@ -67,7 +68,7 @@ const Jobs = ()=>{
                     </div>
                     :
                     wuzzufJobs?.map(
-                        (job,i)=><JobCard jobid={bookmarks.some((bookmark) => bookmark.jobLink === job.job_url)?bookmarks.find((bookmark) => bookmark.jobLink === job.job_url ).id:null} saved={bookmarks.some((bookmark) => bookmark.jobLink === job.job_url)} userid={ProfileData?.id} key={job.job_url} descriptionarray={job.Description.categories} experience={job.Description.level} imageurl={job.image_url} title={job.job_title} description={job.description} company={job.company_name} location={job.location} jobType={job.job_type[0]} url={job.job_url} date={job.datePosted}/>
+                        (job,i)=><JobCard jobid={bookmarks.some((bookmark) => bookmark.jobLink === job.job_url)?bookmarks.find((bookmark) => bookmark.jobLink === job.job_url ).id:null} saved={bookmarks.some((bookmark) => bookmark.jobLink === job.job_url)} userid={ProfileData?.id} key={job.job_url} descriptionarray={job.Description.categories} experience={job.Description.level} imageurl={job.image_url??"assets/wuzzuf-logo.jpg.png"} title={job.job_title} description={job.description} company={job.company_name} location={job.location} jobType={job.job_type[0]} url={job.job_url} date={job.datePosted}/>
                     )
                 :
                 viewSrc == 'indeed' ?
@@ -82,7 +83,7 @@ const Jobs = ()=>{
                     </div>
                     :
                     indeedJobs?.map(
-                        (job,i)=><JobCard jobid={bookmarks.some((bookmark) => bookmark.jobLink === job.job_url)?bookmarks.find((bookmark) => bookmark.jobLink === job.job_url ).id:null} saved={bookmarks.some((bookmark) => bookmark.jobLink === job.job_url)} userid={ProfileData?.id} key={job.job_url} descriptionarray={job.Description.categories} experience={job.Description.level} imageurl={job.image_url} title={job.job_title} description={job.description} company={job.company_name} location={job.location} jobType={job.job_type[0]} url={job.job_url} date={job.datePosted}/>
+                        (job,i)=><JobCard jobid={bookmarks.some((bookmark) => bookmark.jobLink === job.job_url)?bookmarks.find((bookmark) => bookmark.jobLink === job.job_url ).id:null} saved={bookmarks.some((bookmark) => bookmark.jobLink === job.job_url)} userid={ProfileData?.id} key={job.job_url} descriptionarray={[]} experience={null} imageurl={job.company_logo??"/assets/Indeed_logo.svg.png"} title={job.title} description={job.description} company={job.company} location={job.location} jobType={job.job_type} url={job.job_url} date={job.date_posted}/>
                     )
                 :
                 viewSrc == 'linkedin' ?
@@ -97,7 +98,7 @@ const Jobs = ()=>{
                     </div>
                     :
                     linkedinJobs?.map(
-                        (job,i)=><JobCard jobid={bookmarks.some((bookmark) => bookmark.jobLink === job.job_url)?bookmarks.find((bookmark) => bookmark.jobLink === job.job_url ).id:null} saved={bookmarks.some((bookmark) => bookmark.jobLink === job.job_url)} userid={ProfileData?.id} key={job.job_url} descriptionarray={job.Description.categories} experience={job.Description.level} imageurl={job.image_url} title={job.job_title} description={job.description} company={job.company_name} location={job.location} jobType={job.job_type[0]} url={job.job_url} date={job.datePosted}/>
+                        (job,i)=><JobCard jobid={bookmarks.some((bookmark) => bookmark.jobLink === job.job_url)?bookmarks.find((bookmark) => bookmark.jobLink === job.job_url ).id:null} saved={bookmarks.some((bookmark) => bookmark.jobLink === job.job_url)} userid={ProfileData?.id} key={job.job_url} descriptionarray={[]} experience={null} imageurl={"/assets/LinkedIn_icon.svg.png"} title={job.title} description={job.description} company={job.company} location={job.location} jobType={job.job_type} url={job.job_url} date={job.date_posted}/>
                     )
                 : null
             }
