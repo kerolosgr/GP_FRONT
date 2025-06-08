@@ -139,7 +139,7 @@ const Profile = ()=>{
                          <span className="flex items-center"><Github className="mr-2" /><p className="font-[370]">{ProfileData?.github?(githubLoading?"Github User":`${ProfileGithubData?.name == null ? '...' : ProfileGithubData?.name} (${ProfileData.github})`):"Not Set Yet"}</p></span>
                          <span className="flex items-center"><Mail className="mr-2" /><p className="font-[370]">{ProfileData?.email}</p></span>
                          <span className="flex items-center"><Earth className="mr-2" /><p className="font-[370]">{ProfileData?.location}</p></span>
-                         <span className="flex items-start"><Book className="mr-2" /><p className="text-[15px] max-w-[80%] font-[380]">{ProfileData?.collegeName[0]}</p></span>
+                         <span className="flex items-start"><Book className="mr-2" /><p className="text-[15px] max-w-[80%] font-[380] line-clamp-3">{ProfileData?.collegeName[0]}</p></span>
                      </div>
                 </div>
 
