@@ -145,10 +145,10 @@ const Profile = ()=>{
 
                 <div className="flex flex-col justify-start items-start col-span-1 h-fit md:aspect-square bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[20px] md:pb-[20px] rounded-[30px] md:rounded-[50px] shadow overflow-hidden relative">
                     <h2 className="text-black text-[22px] font-light">Skills</h2>
-                    <div className="mt-[10px]">
+                    <div className="mt-[10px] grid grid-cols-3 gap-x-4">
                     {
                         ProfileData?.skills.length > 0 ?
-                        ProfileData.skills.slice(0,8).map(
+                        ProfileData.skills.slice(0,21).map(
                             (skill)=> <p className="text-black text-[14px] font-light my-1" key={skill}>{skill}</p>
                         )
                         :
