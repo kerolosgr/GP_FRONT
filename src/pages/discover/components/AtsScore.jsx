@@ -20,7 +20,7 @@ const AtsScore = ()=>{
         form.append("job_description",requirements)
         setLoading(true);
         try{
-        const res = await axios.post('https://auto-yourself-bb-communicate.trycloudflare.com/evaluate',form);
+        const res = await axios.post('https://shops-pci-reveals-fixed.trycloudflare.com/evaluate',form);
         setRecievedData(res.data)
         console.log(res.data);
         setLoading(false);
