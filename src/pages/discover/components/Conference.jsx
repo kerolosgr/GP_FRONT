@@ -9,7 +9,7 @@ const Conference = ()=>{
 const {ProfileData} = useContext(ProfileContext);
 
     const fetchConference = async ()=>{
-        const res = await axios.get(`https://backing-honors-needs-pg.trycloudflare.com//scrape-conferences?category=engineering-and-technology&place=egypt`);
+        const res = await axios.get(`https://asn-accidents-seem-rocks.trycloudflare.com/scrape-conferences?category=engineering-and-technology&place=egypt`);
         console.log(res.data.conferences)
         return res.data.conferences;
     }
