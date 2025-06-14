@@ -34,7 +34,7 @@ const ResumeCreate = ()=>{
     };
     return(
         <>
-        <div className="flex col-start-4 flex-col md:col-span-2 h-fit py-4 bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[20px] md:pb-[20px] rounded-[30px] md:rounded-[50px] shadow overflow-hidden relative">
+        <div className="flex flex-col md:col-span-2 h-fit py-4 bg-[#f8f7ef]/85 px-[30px] pt-[20px] md:pt-[40px] pb-[20px] md:pb-[20px] rounded-[30px] md:rounded-[50px] shadow overflow-hidden relative">
                 <h2 className="text-black text-[22px] font-light">Generate Resume using AI</h2>
 
 {

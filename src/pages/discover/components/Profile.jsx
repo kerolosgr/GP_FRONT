@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Book, CircleHelp, Earth, Eye, Github, IdCard, LoaderCircle, Mail, Pencil } from "lucide-react";
+import { Book, CircleHelp, Earth, Eye, Github, IdCard, LoaderCircle, LogOut, Mail, Pencil } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { tips } from "./tips";
 import ResumeScore from "./ResumeScore";
@@ -16,6 +16,7 @@ import { toast } from "sonner";
 import AtsScore from "./AtsScore";
 import Questions from "./Questions";
 import ResumeCreate from "./ResumeCreate";
+import { useNavigate } from "react-router-dom";
 const Profile = ()=>{
     const {ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData,profilerefetch,githubrefetch} = useContext(ProfileContext);
     // const GetGithubData = async ()=>{
@@ -27,6 +28,7 @@ const Profile = ()=>{
     //     queryFn: GetGithubData
     // });
     // if(!isLoading) console.log(data)
+    const navigate = useNavigate();
     const [viewUpdate,setviewUpdate] = useState(false);
     const [isUpdating,setisUpdating]= useState(false);
     const [updatedData,setupdatedData] = useState({
@@ -109,11 +111,17 @@ const Profile = ()=>{
             };
         }
     });
+
+    const handleLogOut = ()=>{
+        localStorage.removeItem('userId');
+        Cookies.remove('devtoken');
+        navigate('/');
+    };
     // bg-[radial-gradient(ellipse_at_top_left,_#fefce8,_#f5f5f5,_#e0e0e0)]
     return(
         <>
         <div className="w-full h-fit flex flex-col justify-start items-start p-4 bg-neutral-50/20 rounded-2xl">
-            <h1 className="text-black text-[28px] font-[380] ">Welcome in , {ProfileData?.name}</h1>
+            <h1 className="text-black text-[28px] font-[380] ">Welcome in , {ProfileData?.name} <Button onClick={handleLogOut} className={"rounded-full"}><LogOut/></Button></h1>
             <div className="w-full grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-2 mt-4">
 
                 <div className="aspect-square flex rounded-[50px] shadow relative overflow-hidden group">
