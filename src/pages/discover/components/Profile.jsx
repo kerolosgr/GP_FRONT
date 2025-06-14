@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import AtsScore from "./AtsScore";
 import Questions from "./Questions";
+import ResumeCreate from "./ResumeCreate";
 const Profile = ()=>{
     const {ProfileData,profileLoading,profileError,githubLoading,githubError,ProfileGithubData,profilerefetch,githubrefetch} = useContext(ProfileContext);
     // const GetGithubData = async ()=>{
@@ -170,11 +171,14 @@ const Profile = ()=>{
 
                 <AtsScore/>
 
+                
+
+                <Questions/>
+                <ResumeCreate/>
+
                 <div className="col-span-1 md:col-span-2 h-fit rounded-[30px] md:rounded-[50px] p-4 bg-white overflow-hidden">
                 <img src={resumeImage} className="w-full h-fit object-contain"/>
                 </div>
-
-                <Questions/>
 
             </div>
         </div>
