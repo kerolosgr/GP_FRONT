@@ -14,7 +14,7 @@ const ResumeCreate = ()=>{
     const generateResume = async()=>{
         setLoading(true);
         try{
-            const res = await axios.post('https://justify-ricky-textbooks-qt.trycloudflare.com/resume-to-pdf',form);
+            const res = await axios.post('https://robot-exposure-gear-antibody.trycloudflare.com/resume-to-pdf',form);
             setGeneratedResume(res.data);
             console.log(res.data);
             setResult(true);
